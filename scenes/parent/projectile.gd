@@ -20,7 +20,10 @@ func move() -> void:
 	last_position = position
 	
 	if %RayCast2D.is_colliding():
-		hit_target(%RayCast2D.get_collider())
+		position = %RayCast2D.get_collision_point()
+	
+	#if %RayCast2D.is_colliding():
+		#hit_target(%RayCast2D.get_collider())
 
 func hit_target(target: Node2D) -> void:
 	if target.has_method("hit"):

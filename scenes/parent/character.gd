@@ -6,13 +6,13 @@ extends CharacterBody2D
 
 @export_category("Combat")
 ## the amount of health points that a character has
-## [br] upon reaching zero, the character dies
+## [br] upon reaching zero, the character dies :(
 @export var health: int = 100
 
 @export_category("Movement")
 ## pixels per second that the character can move forward [br]
 ## speed is calculated as 1/3 + (2/3)cos(angle of movement from rotation)
-@export var speed: int = 300
+@export var speed: int = 100
 ## amount of rotations per second possible
 @export var rotation_speed: float = 1
 
