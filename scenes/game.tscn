@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://kwibgwtsyftv"]
+[gd_scene load_steps=4 format=3 uid="uid://kwibgwtsyftv"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_kxx1t"]
 [ext_resource type="PackedScene" uid="uid://b45jry5psv0bo" path="res://scenes/gui/main_menu.tscn" id="2_lulsw"]
+[ext_resource type="PackedScene" uid="uid://bxk8lhc5nd7yj" path="res://scenes/levels/test_level.tscn" id="2_nea3n"]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" node_paths=PackedStringArray("main_menu")]
 script = ExtResource("1_kxx1t")
+main_menu = NodePath("MenuLayer/MainMenu")
+starting_scene = ExtResource("2_nea3n")
 
 [node name="ActiveScene" type="Node" parent="."]
 
-[node name="MainMenu" parent="." instance=ExtResource("2_lulsw")]
+[node name="TestLevel" parent="ActiveScene" instance=ExtResource("2_nea3n")]
+
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="MenuLayer" instance=ExtResource("2_lulsw")]
 visible = false
+size_flags_horizontal = 0
