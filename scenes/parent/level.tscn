@@ -1,16 +1,117 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyryn6qungif5"]
+[gd_scene load_steps=15 format=3 uid="uid://cyryn6qungif5"]
 
 [ext_resource type="PackedScene" uid="uid://cdi7d8qa6p8o0" path="res://scenes/parent/game_scene.tscn" id="1_dry4t"]
 [ext_resource type="Script" path="res://scenes/parent/level.gd" id="2_4yksb"]
 [ext_resource type="PackedScene" uid="uid://4wwritab0hxp" path="res://scenes/props/tile_map.tscn" id="2_c5tc4"]
+[ext_resource type="Material" uid="uid://csm3r3xm1dgk6" path="res://visuals/shaders/white_shader.tres" id="3_gq2r0"]
+[ext_resource type="Shader" path="res://visuals/shaders/view_shader.gdshader" id="5_dxff0"]
+
+[sub_resource type="Gradient" id="Gradient_lqrjs"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.377049, 0.688525)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kfx0j"]
+gradient = SubResource("Gradient_lqrjs")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_pnu3o"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h0njd"]
+gradient = SubResource("Gradient_pnu3o")
+width = 10000
+height = 10000
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jnom3"]
+viewport_path = NodePath("ViewMap")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mudkw"]
+resource_local_to_scene = true
+shader = ExtResource("5_dxff0")
+shader_parameter/mask_with_alpha = true
+shader_parameter/mask_texture = SubResource("ViewportTexture_jnom3")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xrrys"]
+viewport_path = NodePath("LightMap")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mqg8p"]
+viewport_path = NodePath("LightMap")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_r8lr6"]
+viewport_path = NodePath("ViewMap")
 
 [node name="Level" instance=ExtResource("1_dry4t")]
 script = ExtResource("2_4yksb")
+level_name = "Blank Level"
+max_zoom_amnt = 0.0
+white_shader = ExtResource("3_gq2r0")
 
 [node name="TileMap" parent="." index="0" instance=ExtResource("2_c5tc4")]
+unique_name_in_owner = true
 
-[node name="Characters" type="Node" parent="." index="1"]
+[node name="MapItems" type="Node2D" parent="." index="1"]
 
-[node name="Projectiles" type="Node" parent="." index="2"]
+[node name="Characters" type="Node2D" parent="MapItems" index="0"]
 
-[node name="Props" type="Node" parent="." index="3"]
+[node name="Projectiles" type="Node2D" parent="MapItems" index="1"]
+
+[node name="Props" type="Node2D" parent="MapItems" index="2"]
+
+[node name="Lights" type="Node2D" parent="MapItems" index="3"]
+
+[node name="LightMap" type="SubViewport" parent="." index="2"]
+unique_name_in_owner = true
+transparent_bg = true
+canvas_cull_mask = 4294966288
+render_target_update_mode = 4
+
+[node name="LightMapCamera" type="Camera2D" parent="LightMap" index="0"]
+unique_name_in_owner = true
+
+[node name="ViewMap" type="SubViewport" parent="." index="3"]
+unique_name_in_owner = true
+transparent_bg = true
+render_target_update_mode = 4
+
+[node name="VisibilityPointLight" type="PointLight2D" parent="ViewMap" index="0"]
+unique_name_in_owner = true
+blend_mode = 1
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_kfx0j")
+texture_scale = 2.0
+
+[node name="ViewMapCamera" type="Camera2D" parent="ViewMap" index="1"]
+unique_name_in_owner = true
+
+[node name="BackgroundRectangle" type="Sprite2D" parent="ViewMap" index="2"]
+unique_name_in_owner = true
+texture = SubResource("GradientTexture2D_h0njd")
+
+[node name="BackgroundCamera" type="Camera2D" parent="." index="4"]
+unique_name_in_owner = true
+
+[node name="ViewSprite" type="Sprite2D" parent="." index="5"]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_mudkw")
+position = Vector2(-0.500036, 0)
+texture = SubResource("ViewportTexture_xrrys")
+
+[node name="DebugLayer" type="CanvasLayer" parent="." index="6"]
+visible = false
+
+[node name="LightDebugSprite" type="Sprite2D" parent="DebugLayer" index="0"]
+position = Vector2(-418, -179)
+scale = Vector2(0.217, 0.1)
+texture = SubResource("ViewportTexture_mqg8p")
+
+[node name="ViewMapDebugSprite" type="Sprite2D" parent="DebugLayer" index="1"]
+position = Vector2(-449, -240)
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_r8lr6")

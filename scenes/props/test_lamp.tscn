@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5rq3mph4vne0"]
+
+[ext_resource type="PackedScene" uid="uid://cqa8jmx4oswy" path="res://scenes/parent/light_prop.tscn" id="1_wij6i"]
+[ext_resource type="Texture2D" uid="uid://dq2w7ksqua7y4" path="res://icon.svg" id="2_fd2lk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gqph"]
+size = Vector2(24, 24)
+
+[sub_resource type="Gradient" id="Gradient_qqjuc"]
+offsets = PackedFloat32Array(0.333333, 0.699454)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_63p41"]
+gradient = SubResource("Gradient_qqjuc")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="TestLamp" instance=ExtResource("1_wij6i")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_fd2lk")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_4gqph")
+
+[node name="PointLight2D" parent="." index="2"]
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_63p41")

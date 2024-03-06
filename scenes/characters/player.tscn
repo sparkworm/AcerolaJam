@@ -23,6 +23,3 @@ shape = SubResource("CapsuleShape2D_0071h")
 
 [node name="PlayerController" parent="ControllerContainer" index="0" node_paths=PackedStringArray("character") instance=ExtResource("2_ca3al")]
 character = NodePath("../..")
-
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
-zoom = Vector2(2, 2)

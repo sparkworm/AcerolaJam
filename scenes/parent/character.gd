@@ -24,7 +24,7 @@ func _ready():
 	controller.move.connect(Callable(self, "execute_movement"))
 	controller.rotate.connect(Callable(self, "execute_rotation"))
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	move_and_slide()
 
 func execute_movement(direction: Vector2) -> void:

@@ -18,7 +18,7 @@ func _process(delta):
 ## calculates the movement that should be performed, and emits the move signal to accomodate
 func calculate_movement() -> void:
 	var move_axis := Vector2(Input.get_axis(key_left, key_right),
-			Input.get_axis(key_up, key_down))
+			Input.get_axis(key_up, key_down)).normalized()
 	move.emit(move_axis)
 
 ## calculates the rotation that should be performed, and emits the rotate signal to accomodate

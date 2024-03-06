@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bryv55yyreu2m"]
+
+[node name="LightSource" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

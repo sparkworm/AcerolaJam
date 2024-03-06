@@ -11,8 +11,6 @@ starting_scene = ExtResource("2_nea3n")
 
 [node name="ActiveScene" type="Node" parent="."]
 
-[node name="TestLevel" parent="ActiveScene" instance=ExtResource("2_nea3n")]
-
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 
 [node name="MainMenu" parent="MenuLayer" instance=ExtResource("2_lulsw")]

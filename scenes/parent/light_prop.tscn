@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqa8jmx4oswy"]
+
+[ext_resource type="PackedScene" uid="uid://cvm8r83lijtdu" path="res://scenes/parent/prop.tscn" id="1_hslsi"]
+
+[node name="LightProp" instance=ExtResource("1_hslsi")]
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="2"]
