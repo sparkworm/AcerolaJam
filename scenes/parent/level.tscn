@@ -48,7 +48,9 @@ viewport_path = NodePath("ViewMap")
 [node name="Level" instance=ExtResource("1_dry4t")]
 script = ExtResource("2_4yksb")
 level_name = "Blank Level"
-max_zoom_amnt = 0.0
+max_zoom_amnt = 2.0
+min_zoom_amnt = 0.75
+zoom_increment = 0.2
 white_shader = ExtResource("3_gq2r0")
 
 [node name="TileMap" parent="." index="0" instance=ExtResource("2_c5tc4")]

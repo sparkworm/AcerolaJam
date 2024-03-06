@@ -5,8 +5,11 @@ extends GameScene
 
 @export var main_character: Node2D
 
-## zoom cannot be more than max_zoom_amnt and cannot be less than 1/max_zoom_amnt
-@export var max_zoom_amnt: float
+@export_category("Camera")
+## zoom cannot be more than max_zoom_amnt
+@export var max_zoom_amnt: float = 2
+@export var min_zoom_amnt: float = 0.75
+@export var zoom_increment: float = 0.2
 
 @export_category("Technical")
 @export var white_shader: ShaderMaterial
@@ -14,6 +17,7 @@ extends GameScene
 var to_center_on_main_character: Array[Node2D]
 
 func _ready():
+	print(get_tree().root.content_scale_size)
 	initialize_view_map()
 	initialize_light_map()
 	initialize_background_rectangle()
@@ -28,34 +32,35 @@ func _ready():
 func _process(_delta):
 	center_on_main_character()
 	if Input.is_action_just_pressed("zoom_in"):
-		print("zooming in")
-		zoom_cameras(4.0/3)
+		zoom_cameras(zoom_increment)
 	if Input.is_action_just_pressed("zoom_out"):
-		zoom_cameras(3.0/4)
+		zoom_cameras(-zoom_increment)
+
+#region initialization
 
 func initialize_view_map() -> void:
-	%ViewMap.size = Vector2(960, 540) # get_viewport().size
+	%ViewMap.size = get_tree().root.content_scale_size # get_viewport().size
 	%ViewMap.add_child(%TileMap.duplicate())
 	%ViewMap.get_node("TileMap").material = white_shader
 	print(%ViewMap.get_node("TileMap").material)
 
 func initialize_light_map() -> void:
-	%LightMap.size = Vector2(960, 540)
+	%LightMap.size = get_tree().root.content_scale_size
 	%LightMap.add_child($MapItems.duplicate())
 	$MapItems.queue_free()
 	%LightMap.add_child(%TileMap.duplicate())
 
 func initialize_background_rectangle() -> void:
-	%BackgroundRectangle.texture.height = Vector2(960, 540).y
-	%BackgroundRectangle.texture.width = Vector2(960, 540).x
+	%BackgroundRectangle.texture.height = get_tree().root.content_scale_size.y
+	%BackgroundRectangle.texture.width = get_tree().root.content_scale_size.x
 	print(%BackgroundRectangle.texture.height)
+#endregion
 
 func update_cameras() -> void:
 	%BackgroundCamera.position = main_character.position
 	%LightMapCamera.position = main_character.position
 	%ViewMapCamera.position = main_character.position
 	$ViewSprite.position = main_character.position
-	
 
 func center_on_main_character() -> void:
 	for thing in to_center_on_main_character:
@@ -66,5 +71,8 @@ func zoom_cameras(amnt: float) -> void:
 	var zoom_amnt := Vector2(amnt, amnt)
 	for c in to_center_on_main_character:
 		if c is Camera2D:
-			print("camera found")
-			c.zoom *= zoom_amnt
+			if (c.zoom.x + amnt >= max_zoom_amnt 
+					or c.zoom.x + amnt <= min_zoom_amnt):
+				return
+			
+			c.zoom += zoom_amnt
