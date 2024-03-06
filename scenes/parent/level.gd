@@ -17,7 +17,6 @@ extends GameScene
 var to_center_on_main_character: Array[Node2D]
 
 func _ready():
-	print(get_tree().root.content_scale_size)
 	initialize_view_map()
 	initialize_light_map()
 	initialize_background_rectangle()
