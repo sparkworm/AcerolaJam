@@ -16,6 +16,8 @@ extends CharacterBody2D
 ## amount of rotations per second possible
 @export var rotation_speed: float = 1
 
+var actions: Array[Equipment]
+
 ## emitted when the character dies
 signal died()
 
@@ -23,6 +25,11 @@ func _ready():
 	# connect controller signals to actual character actions
 	controller.move.connect(Callable(self, "execute_movement"))
 	controller.rotate.connect(Callable(self, "execute_rotation"))
+	controller.action.connect(Callable(self, "execute_action"))
+	
+	for child in $Equipment.get_children():
+		child = child as Equipment
+		actions.append(child)
 
 func _physics_process(_delta):
 	move_and_slide()
@@ -45,3 +52,7 @@ func die():
 	# should probably call a die animation, a die sound, and possibly a die drop
 	died.emit()
 	queue_free()
+
+func execute_action(action_index: int) -> void:
+	if action_index < actions.size():
+		actions[action_index].use()

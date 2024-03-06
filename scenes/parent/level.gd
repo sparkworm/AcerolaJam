@@ -26,7 +26,7 @@ func _ready():
 	to_center_on_main_character.append_array([%BackgroundCamera, %LightMapCamera, %ViewMapCamera,
 			%VisibilityPointLight, $ViewSprite, %BackgroundRectangle])
 	
-	%TileMap.modulate = Color(0.1,0.1,0.1,1)
+	%TileMap.modulate = Color(0.15,0.15,0.15,1)
 
 func _process(_delta):
 	center_on_main_character()

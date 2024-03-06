@@ -26,9 +26,6 @@ viewport_path = NodePath("ViewMap")
 [node name="TestLevel" node_paths=PackedStringArray("main_character") instance=ExtResource("1_o1hsy")]
 level_name = "Test Level"
 main_character = NodePath("Player")
-max_zoom_amnt = 2.0
-min_zoom_amnt = 0.75
-zoom_increment = 0.2
 
 [node name="Player" parent="." index="0" instance=ExtResource("2_t1pw6")]
 z_index = 1
