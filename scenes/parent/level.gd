@@ -17,6 +17,11 @@ extends GameScene
 var to_center_on_main_character: Array[Node2D]
 
 func _ready():
+	for character in %MapItems/Characters.get_children():
+		for equipment in character.get_equipment():
+			if equipment is Weapon:
+				equipment.fired.connect(Callable(self, "spawn_projectile"))
+	
 	initialize_view_map()
 	initialize_light_map()
 	initialize_background_rectangle()
@@ -34,6 +39,8 @@ func _process(_delta):
 		zoom_cameras(zoom_increment)
 	if Input.is_action_just_pressed("zoom_out"):
 		zoom_cameras(-zoom_increment)
+	
+	#print("\nget_tree().root.content_scale_size ", get_tree().root.content_scale_size)
 
 #region initialization
 
@@ -41,18 +48,23 @@ func initialize_view_map() -> void:
 	%ViewMap.size = get_tree().root.content_scale_size # get_viewport().size
 	%ViewMap.add_child(%TileMap.duplicate())
 	%ViewMap.get_node("TileMap").material = white_shader
-	print(%ViewMap.get_node("TileMap").material)
 
 func initialize_light_map() -> void:
 	%LightMap.size = get_tree().root.content_scale_size
-	%LightMap.add_child($MapItems.duplicate())
-	$MapItems.queue_free()
+	%MapItems.reparent(%LightMap)
+	#%LightMap.add_child($MapItems.duplicate())
+	#$MapItems.queue_free()
 	%LightMap.add_child(%TileMap.duplicate())
 
 func initialize_background_rectangle() -> void:
 	%BackgroundRectangle.texture.height = get_tree().root.content_scale_size.y
 	%BackgroundRectangle.texture.width = get_tree().root.content_scale_size.x
 	print(%BackgroundRectangle.texture.height)
+#endregion
+
+#region children management
+func add_character(character: Character):
+	%MapItems/Characters.add_child(character)
 #endregion
 
 func update_cameras() -> void:
@@ -75,3 +87,6 @@ func zoom_cameras(amnt: float) -> void:
 				return
 			
 			c.zoom += zoom_amnt
+
+func spawn_projectile(proj: Projectile) -> void:
+	pass

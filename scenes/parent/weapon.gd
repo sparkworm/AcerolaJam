@@ -4,5 +4,7 @@ extends Equipment
 
 @export var projectile: Projectile
 
-func use():
+signal fired(proj: Projectile)
+
+func execute_use():
 	pass

@@ -27,6 +27,8 @@ func calculate_movement() -> void:
 
 ## calculates the rotation that should be performed, and emits the rotate signal to accomodate
 func calculate_rotation(delta) -> void:
-	var direction_vector := (character.get_global_mouse_position() - character.global_position)
+	var direction_vector: Vector2 = \
+			(character.get_viewport().get_parent().get_global_mouse_position() - 
+			character.global_position)
 	var r = direction_vector.angle()
 	rotate.emit(r, delta)

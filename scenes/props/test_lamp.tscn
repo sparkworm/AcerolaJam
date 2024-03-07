@@ -28,4 +28,5 @@ shape = SubResource("RectangleShape2D_4gqph")
 
 [node name="PointLight2D" parent="." index="2"]
 shadow_enabled = true
+shadow_filter = 1
 texture = SubResource("GradientTexture2D_63p41")
