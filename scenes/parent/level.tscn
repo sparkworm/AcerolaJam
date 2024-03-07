@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyryn6qungif5"]
+[gd_scene load_steps=15 format=3 uid="uid://cyryn6qungif5"]
 
 [ext_resource type="Script" path="res://scenes/parent/level.gd" id="2_4yksb"]
 [ext_resource type="PackedScene" uid="uid://4wwritab0hxp" path="res://scenes/props/tile_map.tscn" id="2_c5tc4"]
@@ -25,6 +25,9 @@ colors = PackedColorArray(1, 1, 1, 1)
 gradient = SubResource("Gradient_pnu3o")
 width = 10000
 height = 10000
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sxw5l"]
+viewport_path = NodePath("BackgroundMap")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jnom3"]
 viewport_path = NodePath("ViewMap")
@@ -91,14 +94,20 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 texture = SubResource("GradientTexture2D_h0njd")
 
-[node name="BackgroundCamera" type="Camera2D" parent="."]
+[node name="BackgroundMap" type="SubViewport" parent="."]
 unique_name_in_owner = true
+
+[node name="BackgroundCamera" type="Camera2D" parent="BackgroundMap"]
+unique_name_in_owner = true
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = SubResource("ViewportTexture_sxw5l")
 
 [node name="ViewSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
 material = SubResource("ShaderMaterial_mudkw")
-position = Vector2(-0.500036, 0)
 texture = SubResource("ViewportTexture_xrrys")
 
 [node name="DebugLayer" type="CanvasLayer" parent="."]
@@ -113,3 +122,6 @@ texture = SubResource("ViewportTexture_mqg8p")
 position = Vector2(-449, -240)
 scale = Vector2(0.1, 0.1)
 texture = SubResource("ViewportTexture_r8lr6")
+
+[node name="OuterCamera" type="Camera2D" parent="."]
+unique_name_in_owner = true

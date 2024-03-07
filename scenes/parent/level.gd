@@ -24,14 +24,19 @@ func _ready():
 	
 	initialize_view_map()
 	initialize_light_map()
-	initialize_background_rectangle()
+	#initialize_background_rectangle()
+	initialize_background_map()
+	
+	%TileMap.queue_free()
 	
 	%ViewSprite.show()
+	%BackgroundSprite.show()
 	
-	to_center_on_main_character.append_array([%BackgroundCamera, %LightMapCamera, %ViewMapCamera,
-			%VisibilityPointLight, $ViewSprite, %BackgroundRectangle])
+	to_center_on_main_character.append_array(
+			[%BackgroundCamera, %LightMapCamera, %ViewMapCamera, %OuterCamera,
+			%VisibilityPointLight, $ViewSprite, %BackgroundRectangle, %BackgroundSprite])
 	
-	%TileMap.modulate = Color(0.15,0.15,0.15,1)
+	
 
 func _process(_delta):
 	center_on_main_character()
@@ -55,11 +60,18 @@ func initialize_light_map() -> void:
 	#%LightMap.add_child($MapItems.duplicate())
 	#$MapItems.queue_free()
 	%LightMap.add_child(%TileMap.duplicate())
-
-func initialize_background_rectangle() -> void:
+	
+	# initialize background rectangle
 	%BackgroundRectangle.texture.height = get_tree().root.content_scale_size.y
 	%BackgroundRectangle.texture.width = get_tree().root.content_scale_size.x
-	print(%BackgroundRectangle.texture.height)
+
+func initialize_background_map() -> void:
+	%BackgroundMap.size = get_tree().root.content_scale_size
+	%TileMap.modulate = Color(0.1,0.1,0.1,1)
+	%BackgroundMap.add_child(%TileMap.duplicate())
+
+#func initialize_background_rectangle() -> void:
+
 #endregion
 
 #region children management

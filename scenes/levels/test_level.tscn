@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxk8lhc5nd7yj"]
+[gd_scene load_steps=11 format=3 uid="uid://bxk8lhc5nd7yj"]
 
 [ext_resource type="PackedScene" uid="uid://cyryn6qungif5" path="res://scenes/parent/level.tscn" id="1_o1hsy"]
 [ext_resource type="PackedScene" uid="uid://c5rq3mph4vne0" path="res://scenes/props/test_lamp.tscn" id="2_gpyou"]
 [ext_resource type="PackedScene" uid="uid://bynciwan524is" path="res://scenes/characters/player.tscn" id="2_t1pw6"]
 [ext_resource type="Shader" path="res://visuals/shaders/view_shader.gdshader" id="4_5w2vu"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_x42s1"]
+viewport_path = NodePath("BackgroundMap")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_uqou6"]
 viewport_path = NodePath("ViewMap")
@@ -53,7 +56,11 @@ color = Color(0.184314, 0.184314, 0.184314, 1)
 [node name="ViewMap" parent="." index="3"]
 canvas_item_default_texture_filter = 0
 
-[node name="ViewSprite" parent="." index="5"]
+[node name="BackgroundSprite" parent="." index="5"]
+visible = false
+texture = SubResource("ViewportTexture_x42s1")
+
+[node name="ViewSprite" parent="." index="6"]
 material = SubResource("ShaderMaterial_brkra")
 texture = SubResource("ViewportTexture_wi0uk")
 
