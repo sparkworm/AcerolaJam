@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq4a7aopbkv1o"]
+
+[ext_resource type="PackedScene" uid="uid://0nqbjef8p5eo" path="res://scenes/parent/character.tscn" id="1_s18rd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l3y80"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rgtw7"]
+points = PackedVector2Array(0, 0, 50, -10, 50, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7dvu4"]
+radius = 73.2462
+
+[node name="Enemy" instance=ExtResource("1_s18rd")]
+
+[node name="StealthArea" type="Area2D" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StealthArea" index="0"]
+shape = SubResource("CircleShape2D_l3y80")
+
+[node name="VisionArea" type="Area2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea" index="0"]
+shape = SubResource("ConvexPolygonShape2D_rgtw7")
+
+[node name="AgressionArea" type="Area2D" parent="." index="6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AgressionArea" index="0"]
+shape = SubResource("CircleShape2D_7dvu4")

@@ -8,3 +8,9 @@ signal move(direction: Vector2)
 signal rotate(target_direction: float, delta: float)
 ## an action MUST correspond with a piece of Equipment
 signal action()
+
+func calculate_movement(delta) -> void:
+	pass
+
+func calculate_rotation(delta) -> void:
+	pass

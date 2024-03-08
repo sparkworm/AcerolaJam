@@ -12,7 +12,7 @@ extends Controller
 @export var key_reload: String = "reload"
 
 func _process(delta):
-	calculate_movement()
+	calculate_movement(delta)
 	calculate_rotation(delta)
 	if Input.is_action_just_pressed(key_action1):
 		action.emit(0)
@@ -20,7 +20,7 @@ func _process(delta):
 		action.emit(1)
 
 ## calculates the movement that should be performed, and emits the move signal to accomodate
-func calculate_movement() -> void:
+func calculate_movement(_delta) -> void:
 	var move_axis := Vector2(Input.get_axis(key_left, key_right),
 			Input.get_axis(key_up, key_down)).normalized()
 	move.emit(move_axis)

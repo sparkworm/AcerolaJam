@@ -58,7 +58,7 @@ func execute_action(action_index: int) -> void:
 		actions[action_index].use()
 
 func get_equipment() -> Array[Equipment]:
-	var equip_array: Array[Equipment]
+	var equip_array: Array[Equipment] = []
 	for e in %Equipment.get_children():
 		equip_array.append(e)
 	return equip_array
