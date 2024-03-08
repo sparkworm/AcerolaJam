@@ -11,3 +11,10 @@ script = ExtResource("1_8huds")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 unique_name_in_owner = true
+
+[node name="DespawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

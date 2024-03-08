@@ -2,16 +2,17 @@ class_name Projectile
 extends Area2D
 
 ## speed in pixels per second
-@export var speed: int
-@export var damage: int
+@export var speed: int = 100
+@export var damage: int = 10
 
 var last_position: Vector2
 var velocity: Vector2
 
 func _ready():
-	area_entered.connect(Callable(self, "hit_target"))
+	body_entered.connect(Callable(self, "hit_target"))
 	last_position = position
 	velocity = speed*Vector2(cos(rotation), sin(rotation))
+	%DespawnTimer.start()
 
 func _physics_process(delta):
 	move(delta)
@@ -35,3 +36,6 @@ func hit_target(target: Node2D) -> void:
 ## called after the particle hits something
 func die() -> void:
 	queue_free()
+
+func _on_despawn_timer_timeout():
+	die()

@@ -7,8 +7,7 @@
 radius = 3.0
 
 [node name="TestProjectile" instance=ExtResource("1_25mpd")]
-speed = 100
-damage = 10
+speed = 500
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = 1.5708
