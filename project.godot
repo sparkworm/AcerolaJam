@@ -89,7 +89,9 @@ zoom_out={
 2d_render/layer_4="Props"
 2d_render/layer_5="Lights"
 2d_physics/layer_1="Wall"
+2d_navigation/layer_1="traversable"
 2d_physics/layer_2="Character"
+2d_navigation/layer_2="intraversable"
 2d_physics/layer_3="Projectile"
 
 [rendering]
