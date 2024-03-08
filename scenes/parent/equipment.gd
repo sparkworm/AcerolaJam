@@ -2,7 +2,7 @@ class_name Equipment
 extends Node2D
 
 ## the amount of time in seconds that the equipment will have to wait
-@export var cooldown: float
+@export var cooldown: float = 1.0
 
 func _ready():
 	%UseCooldown.wait_time = cooldown

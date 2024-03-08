@@ -5,3 +5,4 @@
 
 [node name="Weapon" instance=ExtResource("1_sg7kc")]
 script = ExtResource("2_vusnd")
+projectile = null

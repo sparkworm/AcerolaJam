@@ -14,9 +14,12 @@ extends GameScene
 @export_category("Technical")
 @export var white_shader: ShaderMaterial
 
+var map_items: Node2D
 var to_center_on_main_character: Array[Node2D]
 
 func _ready():
+	map_items = %MapItems
+	
 	for character in %MapItems/Characters.get_children():
 		for equipment in character.get_equipment():
 			if equipment is Weapon:
@@ -75,8 +78,14 @@ func initialize_background_map() -> void:
 #endregion
 
 #region children management
-func add_character(character: Character):
-	%MapItems/Characters.add_child(character)
+func spawn_character(character: Character) -> void:
+	for equipment in character.get_equipment():
+			if equipment is Weapon:
+				equipment.fired.connect(Callable(self, "spawn_projectile"))
+	map_items.get_node("Characters").add_child(character)
+
+func spawn_projectile(proj: Projectile) -> void:
+	map_items.get_node("Projectiles").add_child(proj)
 #endregion
 
 func update_cameras() -> void:
@@ -99,6 +108,3 @@ func zoom_cameras(amnt: float) -> void:
 				return
 			
 			c.zoom += zoom_amnt
-
-func spawn_projectile(proj: Projectile) -> void:
-	pass

@@ -5,19 +5,21 @@ extends Area2D
 @export var speed: int
 @export var damage: int
 
-var last_position := Vector2(0,0)
-var velocity
+var last_position: Vector2
+var velocity: Vector2
 
 func _ready():
 	area_entered.connect(Callable(self, "hit_target"))
+	last_position = position
+	velocity = speed*Vector2(cos(rotation), sin(rotation))
 
 func _physics_process(delta):
-	move()
+	move(delta)
 
-func move() -> void:
-	position += velocity
+func move(delta) -> void:
+	position += velocity * delta
 	%RayCast2D.target_position = last_position - global_position
-	last_position = position
+	last_position = global_position
 	
 	if %RayCast2D.is_colliding():
 		position = %RayCast2D.get_collision_point()
