@@ -9,7 +9,7 @@
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_navht"]
 vertices = PackedVector2Array(516, -277, 496, 241, -455, 238, -510, -284)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-522, -295, 527, -287, 506, 252, -465, 248)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-513, -353, 510, -353, 508, 287, -511, 286)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_x42s1"]
