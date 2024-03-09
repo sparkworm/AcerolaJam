@@ -1,28 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq4a7aopbkv1o"]
+[gd_scene load_steps=7 format=3 uid="uid://cq4a7aopbkv1o"]
 
 [ext_resource type="PackedScene" uid="uid://0nqbjef8p5eo" path="res://scenes/parent/character.tscn" id="1_s18rd"]
+[ext_resource type="PackedScene" uid="uid://brln0p7cxi4gh" path="res://scenes/technical/enemy_controller.tscn" id="2_umyas"]
+[ext_resource type="Script" path="res://scenes/technical/state_machine.gd" id="3_p522q"]
+[ext_resource type="PackedScene" uid="uid://dfeaa7hl4qki1" path="res://scenes/technical/states/enemy_idle_state.tscn" id="4_nmwke"]
+[ext_resource type="PackedScene" uid="uid://bsbthap2allge" path="res://scenes/technical/enemy_detection.tscn" id="5_f87fc"]
+[ext_resource type="PackedScene" uid="uid://dc7lfi4pph4ko" path="res://scenes/technical/states/chasing_state.tscn" id="5_hfmjj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l3y80"]
+[node name="Enemy" groups=["enemy"] instance=ExtResource("1_s18rd")]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rgtw7"]
-points = PackedVector2Array(0, 0, 50, -10, 50, 10)
+[node name="EnemyController" parent="ControllerContainer" index="0" node_paths=PackedStringArray("character") instance=ExtResource("2_umyas")]
+character = NodePath("../..")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7dvu4"]
-radius = 73.2462
+[node name="StateMachine" type="Node" parent="ControllerContainer/EnemyController" index="0" node_paths=PackedStringArray("starting_state", "character")]
+script = ExtResource("3_p522q")
+starting_state = NodePath("EnemyIdleState")
+character = NodePath("../../..")
 
-[node name="Enemy" instance=ExtResource("1_s18rd")]
+[node name="EnemyIdleState" parent="ControllerContainer/EnemyController/StateMachine" index="0" node_paths=PackedStringArray("detection") instance=ExtResource("4_nmwke")]
+detection = NodePath("../../../../EnemyDetection")
 
-[node name="StealthArea" type="Area2D" parent="." index="4"]
+[node name="ChasingState" parent="ControllerContainer/EnemyController/StateMachine" index="1" node_paths=PackedStringArray("nav_agent") instance=ExtResource("5_hfmjj")]
+nav_agent = NodePath("../../../../NavigationAgent2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StealthArea" index="0"]
-shape = SubResource("CircleShape2D_l3y80")
+[node name="EnemyDetection" parent="." index="4" instance=ExtResource("5_f87fc")]
 
-[node name="VisionArea" type="Area2D" parent="." index="5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea" index="0"]
-shape = SubResource("ConvexPolygonShape2D_rgtw7")
-
-[node name="AgressionArea" type="Area2D" parent="." index="6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AgressionArea" index="0"]
-shape = SubResource("CircleShape2D_7dvu4")
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="5"]
+unique_name_in_owner = true
+path_desired_distance = 4.0
+target_desired_distance = 4.0
+avoidance_layers = 3
+avoidance_mask = 3
+debug_enabled = true

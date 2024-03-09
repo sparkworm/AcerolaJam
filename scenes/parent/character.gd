@@ -1,10 +1,17 @@
 class_name Character
 extends CharacterBody2D
 
+enum ALIGNMENTS {
+	enemy,
+	player,
+	neutral,
+}
+
 ## controlls the actions of the character
 @export var controller: Controller
 
 @export_category("Combat")
+@export var alignment: ALIGNMENTS 
 ## the amount of health points that a character has
 ## [br] upon reaching zero, the character dies :(
 @export var health: int = 100
@@ -34,9 +41,11 @@ func _ready():
 func _physics_process(_delta):
 	move_and_slide()
 
+## makes the character move in the specified direction
 func execute_movement(direction: Vector2) -> void:
 	#velocity = direction * speed
-	velocity = direction*speed*((1.0/2) + max((1.0/2)*cos(rotation - direction.angle()), 0))
+	velocity = direction * speed * \
+			((1.0/2) + max((1.0/2)*cos(rotation - direction.angle()), 0))
 
 func execute_rotation(target_direction: float, delta: float) -> void:
 	rotation = rotate_toward(rotation, target_direction, 2*PI*rotation_speed*delta)
@@ -53,10 +62,12 @@ func die():
 	died.emit()
 	queue_free()
 
+## calls use() on an action if it is within the bounds of actions[]
 func execute_action(action_index: int) -> void:
 	if action_index < actions.size():
 		actions[action_index].use()
 
+## returns an array of all the equipment held by the character
 func get_equipment() -> Array[Equipment]:
 	var equip_array: Array[Equipment] = []
 	for e in %Equipment.get_children():

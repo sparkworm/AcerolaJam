@@ -14,9 +14,9 @@ extends Controller
 func _process(delta):
 	calculate_movement(delta)
 	calculate_rotation(delta)
-	if Input.is_action_just_pressed(key_action1):
+	if Input.is_action_pressed(key_action1):
 		action.emit(0)
-	if Input.is_action_just_pressed(key_action2):
+	if Input.is_action_pressed(key_action2):
 		action.emit(1)
 
 ## calculates the movement that should be performed, and emits the move signal to accomodate

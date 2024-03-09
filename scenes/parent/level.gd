@@ -5,11 +5,14 @@ extends GameScene
 
 @export var main_character: Node2D
 
+@export_category("Visual")
+@export_color_no_alpha var background_map_tint: Color = Color(0.1, 0.1, 0.1)
+
 @export_category("Camera")
 ## zoom cannot be more than max_zoom_amnt
 @export var max_zoom_amnt: float = 2
-@export var min_zoom_amnt: float = 0.75
-@export var zoom_increment: float = 0.2
+@export var min_zoom_amnt: float = 1
+@export var zoom_increment: float = 0.1
 
 @export_category("Technical")
 @export var white_shader: ShaderMaterial
@@ -62,7 +65,9 @@ func initialize_light_map() -> void:
 	%MapItems.reparent(%LightMap)
 	#%LightMap.add_child($MapItems.duplicate())
 	#$MapItems.queue_free()
-	%LightMap.add_child(%TileMap.duplicate())
+	%LightMap/NavigationRegion2D.add_child(%TileMap.duplicate())
+	$LightMap/NavigationRegion2D.bake_navigation_polygon()
+	
 	
 	# initialize background rectangle
 	%BackgroundRectangle.texture.height = get_tree().root.content_scale_size.y
@@ -70,7 +75,7 @@ func initialize_light_map() -> void:
 
 func initialize_background_map() -> void:
 	%BackgroundMap.size = get_tree().root.content_scale_size
-	%TileMap.modulate = Color(0.1,0.1,0.1,1)
+	%TileMap.modulate = background_map_tint
 	%BackgroundMap.add_child(%TileMap.duplicate())
 
 #func initialize_background_rectangle() -> void:

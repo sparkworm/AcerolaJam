@@ -49,6 +49,7 @@ viewport_path = NodePath("ViewMap")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("2_4yksb")
+background_map_tint = Color(0.137255, 0.0745098, 0.141176, 1)
 white_shader = ExtResource("3_gq2r0")
 
 [node name="TileMap" parent="." instance=ExtResource("2_c5tc4")]
@@ -61,8 +62,6 @@ unique_name_in_owner = true
 
 [node name="Projectiles" type="Node2D" parent="MapItems"]
 
-[node name="Props" type="Node2D" parent="MapItems"]
-
 [node name="Lights" type="Node2D" parent="MapItems"]
 
 [node name="LightMap" type="SubViewport" parent="."]
@@ -70,6 +69,10 @@ unique_name_in_owner = true
 transparent_bg = true
 canvas_cull_mask = 4294966288
 render_target_update_mode = 4
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="LightMap"]
+
+[node name="Props" type="Node2D" parent="LightMap/NavigationRegion2D"]
 
 [node name="LightMapCamera" type="Camera2D" parent="LightMap"]
 unique_name_in_owner = true

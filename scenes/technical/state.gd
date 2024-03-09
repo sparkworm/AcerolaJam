@@ -2,11 +2,12 @@ class_name State
 extends Node
 
 var state_machine: StateMachine
+var character: Character
 
-func update(delta) -> void:
+func update(_delta) -> void:
 	pass
 
-func enter(args := {}) -> void:
+func enter(_args := {}) -> void:
 	pass
 
 func exit() -> void:

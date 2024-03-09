@@ -9,8 +9,8 @@ signal rotate(target_direction: float, delta: float)
 ## an action MUST correspond with a piece of Equipment
 signal action()
 
-func calculate_movement(delta) -> void:
+func calculate_movement(_delta) -> void:
 	pass
 
-func calculate_rotation(delta) -> void:
+func calculate_rotation(_delta) -> void:
 	pass
