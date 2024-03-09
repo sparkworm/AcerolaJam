@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwhb4grw1u7g6"]
+
+[ext_resource type="PackedScene" uid="uid://cq4a7aopbkv1o" path="res://scenes/parent/enemy.tscn" id="1_0er8e"]
+[ext_resource type="Texture2D" uid="uid://dq2w7ksqua7y4" path="res://icon.svg" id="2_ume8j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bvpxl"]
+radius = 6.0
+
+[node name="TestEnemy" node_paths=PackedStringArray("controller") instance=ExtResource("1_0er8e")]
+collision_mask = 7
+motion_mode = 1
+wall_min_slide_angle = 0.0
+controller = NodePath("ControllerContainer/EnemyController")
+speed = 50
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ume8j")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_bvpxl")
+
+[node name="EnemyDetection" parent="." index="4"]
+enemy_group = "player"
+metadata/_edit_lock_ = true
+
+[node name="NavigationAgent2D" parent="." index="5"]
+avoidance_layers = 2
+avoidance_mask = 2
