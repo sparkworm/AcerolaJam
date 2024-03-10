@@ -22,7 +22,7 @@ func _process(delta):
 
 ## changes the current state to the one specified by its name
 func change_state_to(state_name: String, args := {}) -> void:
-	print("Changing state to ", state_name)
+	print("Changing state from ", current_state.state_name, " to ", state_name)
 	if has_node(state_name):
 		current_state.exit()
 		current_state = get_node(state_name)

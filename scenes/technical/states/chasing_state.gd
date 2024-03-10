@@ -1,6 +1,7 @@
 class_name ChasingState
 extends State
 
+@export var detection: EnemyDetection
 @export var nav_agent: NavigationAgent2D
 @export var nav_refresh_time: float = 0.15
 
@@ -9,7 +10,9 @@ extends State
 var target: Character
 
 func _ready():
+	state_name = "ChasingState"
 	$NavTimer.wait_time = nav_refresh_time
+	detection.enemy_exited_agression_area.connect(Callable(self, "deaggro"))
 
 func update(delta) -> void:
 	nav_update(delta)
@@ -19,7 +22,8 @@ func enter(args := {}) -> void:
 	$NavTimer.start()
 
 func exit() -> void:
-	pass
+	$NavTimer.stop()
+	character.execute_movement(Vector2.ZERO)
 
 func nav_update(delta) -> void:
 	if nav_agent.is_navigation_finished():
@@ -38,3 +42,7 @@ func nav_calculate() -> void:
 func _on_nav_timer_timeout():
 	#print("nav timer timeout")
 	nav_calculate()
+
+func deaggro(body: Character) -> void:
+	if body == target:
+		state_machine.change_state_to("EnemyIdleState")

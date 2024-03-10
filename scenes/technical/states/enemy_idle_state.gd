@@ -4,6 +4,7 @@ extends State
 @export var detection: EnemyDetection
 
 func _ready():
+	state_name = "EnemyIdleState"
 	detection.enemy_entered_stealth_area.connect(Callable(self, "aggro"))
 	detection.enemy_spotted.connect(Callable(self, "aggro"))
 

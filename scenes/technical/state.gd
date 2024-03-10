@@ -1,6 +1,7 @@
 class_name State
 extends Node
 
+var state_name: String = "state parent"
 var state_machine: StateMachine
 var character: Character
 

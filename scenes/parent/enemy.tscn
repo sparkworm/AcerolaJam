@@ -20,7 +20,8 @@ character = NodePath("../../..")
 [node name="EnemyIdleState" parent="ControllerContainer/EnemyController/StateMachine" index="0" node_paths=PackedStringArray("detection") instance=ExtResource("4_nmwke")]
 detection = NodePath("../../../../EnemyDetection")
 
-[node name="ChasingState" parent="ControllerContainer/EnemyController/StateMachine" index="1" node_paths=PackedStringArray("nav_agent") instance=ExtResource("5_hfmjj")]
+[node name="ChasingState" parent="ControllerContainer/EnemyController/StateMachine" index="1" node_paths=PackedStringArray("detection", "nav_agent") instance=ExtResource("5_hfmjj")]
+detection = NodePath("../../../../EnemyDetection")
 nav_agent = NodePath("../../../../NavigationAgent2D")
 
 [node name="EnemyDetection" parent="." index="4" instance=ExtResource("5_f87fc")]
