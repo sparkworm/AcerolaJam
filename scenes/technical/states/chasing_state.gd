@@ -31,9 +31,11 @@ func nav_update(delta) -> void:
 		return
 	
 	# the position for this might not work
-	var direction = character.to_local(nav_agent.get_next_path_position()).normalized() 
+	var direction = character.to_local(nav_agent.get_next_path_position()).normalized()
+	#print(character.rotation*180.0/PI, ", ", direction.angle()*180.0/PI) 
 	#character.execute_rotation(direction.angle(), delta)
-	character.execute_movement(direction)
+	character.look_at(target.global_position)
+	character.execute_movement(Vector2.from_angle(direction.angle()+character.rotation))
 
 func nav_calculate() -> void:
 	nav_agent.target_position = target.global_position

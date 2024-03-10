@@ -16,6 +16,8 @@ func _ready():
 		states.append(child as State)
 		child.state_machine = self
 		child.character = character
+	
+	current_state.enter()
 
 func _process(delta):
 	current_state.update(delta)
