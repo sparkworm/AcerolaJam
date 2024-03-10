@@ -55,6 +55,13 @@ position = Vector2(-168, -41)
 position = Vector2(254, 18)
 controller = NodePath("../TestEnemy/ControllerContainer/EnemyController")
 
+[node name="LightMap_NavigationRegion2D_Props#MapItems_Props#LightMap_NavigationRegion2D_Props#Lights#TestLamp" parent="MapItems/Props" index="0" instance=ExtResource("2_gpyou")]
+position = Vector2(93, 57)
+
+[node name="LightMap_NavigationRegion2D_Props#MapItems_Props#LightMap_NavigationRegion2D_Props#Lights#TestLamp2" parent="MapItems/Props" index="1" instance=ExtResource("2_gpyou")]
+position = Vector2(-116, 36)
+collision_mask = 7
+
 [node name="LightMap" parent="." index="2"]
 canvas_cull_mask = 4294967295
 
@@ -63,13 +70,6 @@ color = Color(0.184314, 0.184314, 0.184314, 1)
 
 [node name="NavigationRegion2D" parent="LightMap" index="1"]
 navigation_polygon = SubResource("NavigationPolygon_navht")
-
-[node name="MapItems_Props#LightMap_NavigationRegion2D_Props#Lights#TestLamp" parent="LightMap/NavigationRegion2D/Props" index="0" instance=ExtResource("2_gpyou")]
-position = Vector2(93, 57)
-
-[node name="MapItems_Props#LightMap_NavigationRegion2D_Props#Lights#TestLamp2" parent="LightMap/NavigationRegion2D/Props" index="1" instance=ExtResource("2_gpyou")]
-position = Vector2(-116, 36)
-collision_mask = 7
 
 [node name="ViewMap" parent="." index="3"]
 canvas_item_default_texture_filter = 0

@@ -8,6 +8,7 @@
 script = ExtResource("2_vusnd")
 projectile = null
 fire_effect = ExtResource("3_itm6h")
+inaccuracy = 0.3
 
 [node name="SpawnPoint" parent="." index="1"]
 unique_name_in_owner = true

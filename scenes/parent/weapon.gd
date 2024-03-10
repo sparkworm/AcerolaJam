@@ -4,6 +4,8 @@ extends Equipment
 
 @export var projectile: PackedScene
 @export var fire_effect: PackedScene
+## a small float value representing the radians coverd by the spread
+@export var inaccuracy: float = 0.3
 
 signal fired(proj: Projectile)
 
@@ -15,7 +17,8 @@ func execute_use() -> void:
 func spawn_projectile() -> void:
 	var proj = projectile.instantiate()
 	proj.global_position = %SpawnPoint.global_position
-	proj.rotation = global_rotation
+	var variance = randf_range(-inaccuracy/2.0, inaccuracy/2.0)
+	proj.rotation = global_rotation + variance
 	fired.emit(proj)
 
 func spawn_fire_effect() -> void:

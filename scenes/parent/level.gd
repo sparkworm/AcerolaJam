@@ -62,6 +62,7 @@ func initialize_view_map() -> void:
 
 func initialize_light_map() -> void:
 	%LightMap.size = get_tree().root.content_scale_size
+	%MapItems/Props.reparent(%NavigationRegion2D)
 	%MapItems.reparent(%LightMap)
 	#%LightMap.add_child($MapItems.duplicate())
 	#$MapItems.queue_free()
