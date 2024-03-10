@@ -3,9 +3,10 @@
 [ext_resource type="Script" path="res://scenes/technical/enemy_detection.gd" id="1_5frjj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l3y80"]
+radius = 39.0128
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7dvu4"]
-radius = 73.2462
+radius = 186.024
 
 [node name="EnemyDetection" type="Node2D"]
 script = ExtResource("1_5frjj")
@@ -22,7 +23,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
-polygon = PackedVector2Array(80, -15, 0, 0, 80, 15, 88, 0)
+polygon = PackedVector2Array(320, -30, 0, 0, 320, 30)
 
 [node name="AggressionArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -30,6 +31,9 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggressionArea"]
 shape = SubResource("CircleShape2D_7dvu4")
+
+[node name="LineOfSightCheck" type="RayCast2D" parent="."]
+collision_mask = 3
 
 [connection signal="body_entered" from="StealthArea" to="." method="_on_stealth_area_body_entered"]
 [connection signal="body_entered" from="VisionArea" to="." method="_on_vision_area_body_entered"]

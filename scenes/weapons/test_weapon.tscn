@@ -6,7 +6,7 @@
 
 [node name="TestWeapon" instance=ExtResource("1_vnutl")]
 projectile = ExtResource("2_ithju")
-cooldown = 0.1
+cooldown = 0.01
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = 1.5708

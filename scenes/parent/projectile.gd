@@ -19,7 +19,8 @@ func _physics_process(delta):
 
 func move(delta) -> void:
 	position += velocity * delta
-	%RayCast2D.target_position = last_position - global_position
+	
+	%RayCast2D.target_position = (last_position - global_position).rotated(-global_rotation)
 	last_position = global_position
 	
 	if %RayCast2D.is_colliding():
