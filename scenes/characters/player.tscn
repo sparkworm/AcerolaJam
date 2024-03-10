@@ -1,29 +1,28 @@
 [gd_scene load_steps=6 format=3 uid="uid://bynciwan524is"]
 
 [ext_resource type="PackedScene" uid="uid://0nqbjef8p5eo" path="res://scenes/parent/character.tscn" id="1_qbgq0"]
-[ext_resource type="Texture2D" uid="uid://dq2w7ksqua7y4" path="res://icon.svg" id="2_3wljj"]
 [ext_resource type="PackedScene" uid="uid://yimf7eg2k0w2" path="res://scenes/technical/player_controller.tscn" id="2_ca3al"]
-[ext_resource type="PackedScene" uid="uid://cpbndokqcaoua" path="res://scenes/weapons/test_weapon.tscn" id="4_ntncj"]
+[ext_resource type="Texture2D" uid="uid://dbhka74bp2rjr" path="res://visuals/sprites/characer2.png" id="2_x0y7i"]
+[ext_resource type="PackedScene" uid="uid://b4xon7jwr28gf" path="res://scenes/weapons/rifle.tscn" id="4_0x5ao"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0071h"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6x577"]
 radius = 12.0
-height = 26.0
 
 [node name="Player" node_paths=PackedStringArray("controller") groups=["player"] instance=ExtResource("1_qbgq0")]
 motion_mode = 1
 controller = NodePath("ControllerContainer/PlayerController")
 
 [node name="Sprite2D" parent="." index="0"]
+position = Vector2(-1, 0)
 rotation = 1.5708
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_3wljj")
+texture = ExtResource("2_x0y7i")
 
 [node name="CollisionShape2D" parent="." index="1"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_0071h")
+shape = SubResource("CircleShape2D_6x577")
 
 [node name="PlayerController" parent="ControllerContainer" index="0" node_paths=PackedStringArray("character") instance=ExtResource("2_ca3al")]
 character = NodePath("../..")
 
-[node name="TestWeapon" parent="Equipment" index="0" instance=ExtResource("4_ntncj")]
-position = Vector2(18, 12)
+[node name="Rifle" parent="Equipment" index="0" instance=ExtResource("4_0x5ao")]
+position = Vector2(11, 0)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwhb4grw1u7g6"]
 
 [ext_resource type="PackedScene" uid="uid://cq4a7aopbkv1o" path="res://scenes/parent/enemy.tscn" id="1_0er8e"]
-[ext_resource type="Texture2D" uid="uid://dq2w7ksqua7y4" path="res://icon.svg" id="2_ume8j"]
+[ext_resource type="Texture2D" uid="uid://dggadlgx0j06v" path="res://visuals/sprites/enemy.png" id="2_3555d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bvpxl"]
-radius = 6.0
+radius = 13.0
 
 [node name="TestEnemy" node_paths=PackedStringArray("controller") instance=ExtResource("1_0er8e")]
 collision_mask = 7
@@ -14,8 +14,9 @@ controller = NodePath("ControllerContainer/EnemyController")
 speed = 50
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_ume8j")
+position = Vector2(-1, 0)
+rotation = 1.5708
+texture = ExtResource("2_3555d")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_bvpxl")

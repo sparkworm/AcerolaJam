@@ -2,11 +2,12 @@ You are their creation.
 But they have bred an aberration.
 
 You are purple.
-All others are red.
-They bear you ill will.
+All others are gold.
+But their blood is red.
+They bear you ill will.bbebbbb
 They want you dead.
 
-You can become red like them.
+You can become red like their insides.
 
 Bathe in their blood.
 
@@ -17,7 +18,8 @@ When you touch the enemy's blood, you become just a little more red.
 
 ======================
 
-This is my submission for the Acerola game jam, which took place 28, February, 2024 to 14, March, 2024.
+This is my submission for the Acerola Game Jam.
+The Acerola Game Jam took place 28, February, 2024 to 14, March, 2024.
 
 This project is made in Godot version 4.2.1 stable
 

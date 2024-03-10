@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bahsqocqfafhu"]
 
 [ext_resource type="PackedScene" uid="uid://ny6y21mpxygg" path="res://scenes/parent/projectile.tscn" id="1_25mpd"]
-[ext_resource type="Texture2D" uid="uid://dq2w7ksqua7y4" path="res://icon.svg" id="2_apj7f"]
+[ext_resource type="Texture2D" uid="uid://b5l81hfimeefs" path="res://visuals/sprites/bullet.png" id="2_b7poj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1y3pi"]
 radius = 3.0
@@ -11,8 +11,7 @@ speed = 750
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = 1.5708
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_apj7f")
+texture = ExtResource("2_b7poj")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_1y3pi")

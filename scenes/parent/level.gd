@@ -107,9 +107,9 @@ func center_on_main_character() -> void:
 func zoom_cameras(amnt: float) -> void:
 	var zoom_amnt := Vector2(amnt, amnt)
 	for c in to_center_on_main_character:
-		if c is Camera2D:
-			if (c.zoom.x + amnt >= max_zoom_amnt 
-					or c.zoom.x + amnt <= min_zoom_amnt):
+		if c is Camera2D and c != %OuterCamera:
+			if (c.zoom.x + amnt > max_zoom_amnt 
+					or c.zoom.x + amnt < min_zoom_amnt):
 				return
 			
 			c.zoom += zoom_amnt

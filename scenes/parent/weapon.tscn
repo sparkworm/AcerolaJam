@@ -1,8 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2t1lxxbyg757"]
+[gd_scene load_steps=4 format=3 uid="uid://d2t1lxxbyg757"]
 
 [ext_resource type="PackedScene" uid="uid://3dtr78xjqe5j" path="res://scenes/parent/equipment.tscn" id="1_sg7kc"]
 [ext_resource type="Script" path="res://scenes/parent/weapon.gd" id="2_vusnd"]
+[ext_resource type="PackedScene" uid="uid://mratfqjgeutu" path="res://scenes/effects/gunfire_effect.tscn" id="3_itm6h"]
 
 [node name="Weapon" instance=ExtResource("1_sg7kc")]
 script = ExtResource("2_vusnd")
 projectile = null
+fire_effect = ExtResource("3_itm6h")
+
+[node name="SpawnPoint" parent="." index="1"]
+unique_name_in_owner = true

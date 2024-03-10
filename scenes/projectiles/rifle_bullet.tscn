@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://v4266gxvane3"]
+
+[ext_resource type="PackedScene" uid="uid://ny6y21mpxygg" path="res://scenes/parent/projectile.tscn" id="1_3vtcr"]
+[ext_resource type="Texture2D" uid="uid://b5l81hfimeefs" path="res://visuals/sprites/bullet.png" id="2_ph3re"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i504b"]
+size = Vector2(4, 4)
+
+[sub_resource type="Gradient" id="Gradient_b1d83"]
+offsets = PackedFloat32Array(0.242537, 0.649254)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_whpvd"]
+gradient = SubResource("Gradient_b1d83")
+width = 5
+height = 5
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="RifleBullet" instance=ExtResource("1_3vtcr")]
+speed = 750
+damage = 34
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-2, 0)
+rotation = 1.5708
+scale = Vector2(1, 2)
+texture = ExtResource("2_ph3re")
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_i504b")
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="4"]
+position = Vector2(1, 0)
+color = Color(1, 1, 0.560784, 1)
+texture = SubResource("GradientTexture2D_whpvd")
