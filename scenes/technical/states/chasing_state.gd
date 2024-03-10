@@ -26,7 +26,8 @@ func nav_update(delta) -> void:
 		#print("navigation finished")
 		return
 	
-	var direction = character.to_local(nav_agent.get_next_path_position()).normalized() # the position for this might not work
+	# the position for this might not work
+	var direction = character.to_local(nav_agent.get_next_path_position()).normalized() 
 	#character.execute_rotation(direction.angle(), delta)
 	character.execute_movement(direction)
 

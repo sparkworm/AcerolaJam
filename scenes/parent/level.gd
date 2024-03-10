@@ -40,7 +40,8 @@ func _ready():
 	
 	to_center_on_main_character.append_array(
 			[%BackgroundCamera, %LightMapCamera, %ViewMapCamera, %OuterCamera,
-			%VisibilityPointLight, $ViewSprite, %BackgroundRectangle, %BackgroundSprite])
+			%VisibilityPointLight, $ViewSprite, %BackgroundRectangle, 
+			%BackgroundSprite])
 	
 	
 
@@ -51,7 +52,6 @@ func _process(_delta):
 	if Input.is_action_just_pressed("zoom_out"):
 		zoom_cameras(-zoom_increment)
 	
-	#print("\nget_tree().root.content_scale_size ", get_tree().root.content_scale_size)
 
 #region initialization
 
