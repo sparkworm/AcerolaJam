@@ -6,6 +6,7 @@
 
 [node name="Rifle" instance=ExtResource("1_6o31j")]
 projectile = ExtResource("2_ofj7g")
+is_melee = false
 cooldown = 0.2
 
 [node name="Sprite2D" parent="." index="0"]

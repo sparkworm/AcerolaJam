@@ -6,12 +6,18 @@ extends Equipment
 @export var fire_effect: PackedScene
 ## a small float value representing the radians coverd by the spread
 @export var inaccuracy: float = 0.3
+## whether or not the weapon is melee
+## [br] melee weapons still spawn a projectile, but their projectile despawns 
+## before traveling very far
+@export var is_melee: bool = false
+
 
 signal fired(proj: Projectile)
 
 func execute_use() -> void:
 	spawn_projectile()
-	spawn_fire_effect()
+	if fire_effect != null:
+		spawn_fire_effect()
 	
 
 func spawn_projectile() -> void:

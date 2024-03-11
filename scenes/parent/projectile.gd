@@ -4,6 +4,7 @@ extends Area2D
 ## speed in pixels per second
 @export var speed: int = 100
 @export var damage: int = 10
+@export var lifetime: float = 10
 
 var last_position: Vector2
 var velocity: Vector2
@@ -12,6 +13,7 @@ func _ready():
 	body_entered.connect(Callable(self, "hit_target"))
 	last_position = position
 	velocity = speed*Vector2(cos(rotation), sin(rotation))
+	%DespawnTimer.wait_time = lifetime
 	%DespawnTimer.start()
 
 func _physics_process(delta):
