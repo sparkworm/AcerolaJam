@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://4wwritab0hxp"]
+[gd_scene load_steps=19 format=3 uid="uid://4wwritab0hxp"]
 
 [ext_resource type="Texture2D" uid="uid://x8idsth43xao" path="res://visuals/tiles/tiles.png" id="1_kkal5"]
 
@@ -34,6 +34,9 @@ polygon = PackedVector2Array(-2, -1, -1, -1, -1, -2, 8, -2, 8, 2, 2, 2, 2, 8, -2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lhuqv"]
 polygon = PackedVector2Array(-1, 2, -1, 1, -2, 1, -2, -8, 2, -8, 2, -2, 8, -2, 8, 2)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vh0m5"]
+polygon = PackedVector2Array(-2, -8, 2, -8, 2, -2, 8, -2, 8, 2, 2, 2, 2, 8, -2, 8, -2, 2, -8, 2, -8, -2, -2, -2)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eg7ej"]
 polygon = PackedVector2Array(-2, 8, -2, 1, -2, -8, 2, -8, 2, -2, 2, 8)
@@ -175,6 +178,17 @@ texture = ExtResource("1_kkal5")
 7:4/0/terrains_peering_bit/right_side = 0
 7:4/0/terrains_peering_bit/left_side = 0
 7:4/0/terrains_peering_bit/top_side = 0
+8:3/0 = 0
+8:3/0/terrain_set = 0
+8:3/0/terrain = 0
+8:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_vh0m5")
+8:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:3/0/physics_layer_0/angular_velocity = 0.0
+8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, -2, -2, -8, 2, -8, 2, -2, 8, -2, 8, 2, 2, 2, 2, 8, -2, 8, -2, 2, -8, 2, -8, -2)
+8:3/0/terrains_peering_bit/right_side = 0
+8:3/0/terrains_peering_bit/bottom_side = 0
+8:3/0/terrains_peering_bit/left_side = 0
+8:3/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSet" id="TileSet_mw7x2"]
 occlusion_layer_0/light_mask = 1

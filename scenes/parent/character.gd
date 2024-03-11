@@ -26,7 +26,8 @@ enum ALIGNMENTS {
 var actions: Array[Equipment]
 
 ## emitted when the character dies
-signal died()
+signal died(cords: Vector2)
+signal is_hit(cords: Vector2)
 
 func _ready():
 	# connect controller signals to actual character actions
@@ -53,13 +54,14 @@ func execute_rotation(target_direction: float, delta: float) -> void:
 ## this function is called when the character is hit
 func hit(damage: int):
 	health -= damage
+	is_hit.emit(position)
 	if health <= 0:
 		die()
 
 ## this function is called when the character drops to 0 health
 func die():
 	# should probably call a die animation, a die sound, and possibly a die drop
-	died.emit()
+	died.emit(position)
 	queue_free()
 
 ## calls use() on an action if it is within the bounds of actions[]

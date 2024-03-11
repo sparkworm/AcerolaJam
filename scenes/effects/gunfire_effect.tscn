@@ -31,7 +31,7 @@ modulate = Color(1, 0.815686, 0, 1)
 emitting = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_7fora")
-lifetime = 0.05
+lifetime = 0.1
 one_shot = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

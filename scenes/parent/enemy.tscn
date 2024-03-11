@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dc7lfi4pph4ko" path="res://scenes/technical/states/chasing_state.tscn" id="5_hfmjj"]
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_s18rd")]
+z_index = 1
+
+[node name="Sprite2D" parent="." index="0"]
+z_index = 1
 
 [node name="EnemyController" parent="ControllerContainer" index="0" node_paths=PackedStringArray("character") instance=ExtResource("2_umyas")]
 character = NodePath("../..")

@@ -16,6 +16,8 @@ extends GameScene
 
 @export_category("Technical")
 @export var white_shader: ShaderMaterial
+@export var blood_decal_spawner: PackedScene
+@export var blood_decal: PackedScene
 
 var map_items: Node2D
 var to_center_on_main_character: Array[Node2D]
@@ -23,10 +25,14 @@ var to_center_on_main_character: Array[Node2D]
 func _ready():
 	map_items = %MapItems
 	
-	for character in %MapItems/Characters.get_children():
+	for character:Character in %MapItems/Characters.get_children():
 		for equipment in character.get_equipment():
 			if equipment is Weapon:
 				equipment.fired.connect(Callable(self, "spawn_projectile"))
+		var hit_callable = Callable(self, "spawn_blood_splatter")
+		hit_callable = hit_callable.bind(12)
+		character.is_hit.connect(hit_callable)
+		
 	
 	initialize_view_map()
 	initialize_light_map()
@@ -93,6 +99,27 @@ func spawn_character(character: Character) -> void:
 func spawn_projectile(proj: Projectile) -> void:
 	map_items.get_node("Projectiles").add_child(proj)
 	shake_cameras(5)
+
+func spawn_blood_splatter(coords: Vector2, amnt: int) -> void:
+	for i in range(amnt):
+		var blood_spawner = blood_decal_spawner.instantiate() as BloodDecalSpawner
+		var direction: Vector2 = Vector2.from_angle(randf_range(0, 2*PI))
+		var magnitude: float = randf_range(40,300)
+		
+		blood_spawner.spawn_blood_decal.connect(Callable(self, "spawn_blood_decal"))
+		%LightMap/MapItems/Decals.call_deferred("add_child", (blood_spawner))
+		blood_spawner.position = coords
+		#blood_spawner._integrate_forces(PhysicsDirectBodyState2D.linear_velocity = Vector2(100,10))
+		#blood_spawner.apply_central_impulse(direction*magnitude*100)
+		blood_spawner.velocity = direction*magnitude
+		blood_spawner.initial_v = blood_spawner.velocity.length()
+		
+
+func spawn_blood_decal(coords: Vector2, initial_velocity) -> void:
+	var blood = blood_decal.instantiate() as BloodDecal
+	blood.position = coords
+	blood.max_size = 30/(initial_velocity)
+	%LightMap/MapItems/Decals.add_child(blood)
 #endregion
 
 func shake_cameras(magnitude: float) -> void:
@@ -101,7 +128,7 @@ func shake_cameras(magnitude: float) -> void:
 	
 	#var shake_vector := Vector2(magnitude, magnitude)
 	
-	var shake_vector := Vector2.ZERO.from_angle(randf_range(0, 2*PI))*magnitude
+	var shake_vector := Vector2.from_angle(randf_range(0, 2*PI))*magnitude
 	
 	
 	for camera in get_cameras():

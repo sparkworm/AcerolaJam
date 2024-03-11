@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cyryn6qungif5"]
+[gd_scene load_steps=17 format=3 uid="uid://cyryn6qungif5"]
 
 [ext_resource type="Script" path="res://scenes/parent/level.gd" id="2_4yksb"]
 [ext_resource type="PackedScene" uid="uid://4wwritab0hxp" path="res://scenes/props/tile_map.tscn" id="2_c5tc4"]
 [ext_resource type="Material" uid="uid://csm3r3xm1dgk6" path="res://visuals/shaders/white_shader.tres" id="3_gq2r0"]
+[ext_resource type="PackedScene" uid="uid://57suq24idkn7" path="res://scenes/effects/blood_decal_spawner.tscn" id="3_yyddy"]
+[ext_resource type="PackedScene" uid="uid://dkupbb2ru6xc0" path="res://scenes/effects/blood_decal.tscn" id="4_vbqas"]
 [ext_resource type="Shader" path="res://visuals/shaders/view_shader.gdshader" id="5_dxff0"]
 
 [sub_resource type="Gradient" id="Gradient_lqrjs"]
@@ -51,6 +53,8 @@ viewport_path = NodePath("ViewMap")
 script = ExtResource("2_4yksb")
 background_map_tint = Color(0.137255, 0.0745098, 0.141176, 1)
 white_shader = ExtResource("3_gq2r0")
+blood_decal_spawner = ExtResource("3_yyddy")
+blood_decal = ExtResource("4_vbqas")
 
 [node name="TileMap" parent="." instance=ExtResource("2_c5tc4")]
 unique_name_in_owner = true

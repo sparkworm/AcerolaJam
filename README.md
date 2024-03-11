@@ -4,7 +4,7 @@ But they have bred an aberration.
 You are purple.
 All others are gold.
 But their blood is red.
-They bear you ill will.bbebbbb
+They bear you ill will.
 They want you dead.
 
 You can become red like their insides.

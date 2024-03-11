@@ -25,7 +25,7 @@ func exit() -> void:
 	$NavTimer.stop()
 	character.execute_movement(Vector2.ZERO)
 
-func nav_update(delta) -> void:
+func nav_update(_delta) -> void:
 	if nav_agent.is_navigation_finished():
 		#print("navigation finished")
 		return
