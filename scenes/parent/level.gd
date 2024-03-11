@@ -92,13 +92,37 @@ func spawn_character(character: Character) -> void:
 
 func spawn_projectile(proj: Projectile) -> void:
 	map_items.get_node("Projectiles").add_child(proj)
+	shake_cameras(5)
 #endregion
+
+func shake_cameras(magnitude: float) -> void:
+	#var shake_vector := Vector2(randf_range(-1,1)*magnitude, 
+			#randf_range(-1,1)*magnitude)
+	
+	#var shake_vector := Vector2(magnitude, magnitude)
+	
+	var shake_vector := Vector2.ZERO.from_angle(randf_range(0, 2*PI))*magnitude
+	
+	
+	for camera in get_cameras():
+		if camera != %OuterCamera:
+			var offset_tween = create_tween()
+			offset_tween.tween_property(camera, "offset", shake_vector, 0.05)
+			offset_tween.tween_property(camera, "offset", Vector2.ZERO, 0.05)
+			camera.offset += shake_vector
 
 func update_cameras() -> void:
 	%BackgroundCamera.position = main_character.position
 	%LightMapCamera.position = main_character.position
 	%ViewMapCamera.position = main_character.position
 	$ViewSprite.position = main_character.position
+
+func get_cameras() -> Array[Camera2D]:
+	var cam_array: Array[Camera2D] = []
+	for child in to_center_on_main_character:
+		if child is Camera2D:
+			cam_array.append(child)
+	return cam_array
 
 func center_on_main_character() -> void:
 	for thing in to_center_on_main_character:
@@ -107,8 +131,8 @@ func center_on_main_character() -> void:
 ## zooms in all cameras by a certain amount
 func zoom_cameras(amnt: float) -> void:
 	var zoom_amnt := Vector2(amnt, amnt)
-	for c in to_center_on_main_character:
-		if c is Camera2D and c != %OuterCamera:
+	for c in get_cameras():
+		if c != %OuterCamera:
 			if (c.zoom.x + amnt > max_zoom_amnt 
 					or c.zoom.x + amnt < min_zoom_amnt):
 				return

@@ -79,6 +79,7 @@ unique_name_in_owner = true
 
 [node name="LightMapCamera" type="Camera2D" parent="LightMap"]
 unique_name_in_owner = true
+position_smoothing_enabled = true
 
 [node name="ViewMap" type="SubViewport" parent="."]
 unique_name_in_owner = true
@@ -95,6 +96,7 @@ texture_scale = 2.0
 
 [node name="ViewMapCamera" type="Camera2D" parent="ViewMap"]
 unique_name_in_owner = true
+position_smoothing_enabled = true
 
 [node name="BackgroundRectangle" type="Sprite2D" parent="ViewMap"]
 unique_name_in_owner = true
@@ -105,6 +107,7 @@ unique_name_in_owner = true
 
 [node name="BackgroundCamera" type="Camera2D" parent="BackgroundMap"]
 unique_name_in_owner = true
+position_smoothing_enabled = true
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
