@@ -1,10 +1,18 @@
 class_name Equipment
 extends Node2D
 
+enum ITEM_CATAGORIES {
+	melee_weapon,
+	ranged_weapon,
+}
+
+@export var item_catagory: ITEM_CATAGORIES
+
 ## the amount of time in seconds that the equipment will have to wait
 @export var cooldown: float = 1.0
 
 var cooled_down: bool
+
 
 func _ready():
 	%UseCooldown.wait_time = cooldown

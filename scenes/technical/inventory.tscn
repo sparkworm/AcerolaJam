@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddsf7fg8i7stl"]
+
+[ext_resource type="Script" path="res://scenes/technical/inventory.gd" id="1_4tfyu"]
+
+[node name="Inventory" type="Node2D"]
+script = ExtResource("1_4tfyu")
+
+[node name="Melee" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Ranged" type="Node2D" parent="."]
+unique_name_in_owner = true
