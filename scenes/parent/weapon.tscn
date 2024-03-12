@@ -7,10 +7,11 @@
 [node name="Weapon" instance=ExtResource("1_sg7kc")]
 script = ExtResource("2_vusnd")
 projectile = null
-ammo_amnt = -1
+max_ammo = -1
 fire_effect = ExtResource("3_itm6h")
 inaccuracy = 0.3
 is_melee = false
+reload_time = 0.0
 
 [node name="SpawnPoint" parent="." index="1"]
 unique_name_in_owner = true

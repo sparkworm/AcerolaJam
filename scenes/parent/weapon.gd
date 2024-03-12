@@ -5,7 +5,7 @@ extends Equipment
 @export var projectile: PackedScene
 ## the amount of ammo the weapon has.
 ## [br] -1 indicates infinite ammo
-@export var ammo_amnt: int = -1
+@export var max_ammo: int = -1
 @export var fire_effect: PackedScene
 ## a small float value representing the radians coverd by the spread
 @export var inaccuracy: float = 0.3
@@ -13,9 +13,16 @@ extends Equipment
 ## [br] melee weapons still spawn a projectile, but their projectile despawns 
 ## before traveling very far
 @export var is_melee: bool = false
+## the amount of time in seconds that it takes for an enemy to reload
+@export var reload_time: float
 
+var ammo_amnt: int
 
 signal fired(proj: Projectile)
+
+func _ready():
+	super._ready()
+	ammo_amnt = max_ammo
 
 func execute_use() -> void:
 	if sufficient_ammo():
@@ -44,3 +51,6 @@ func remove_ammo() -> void:
 
 func sufficient_ammo() -> bool:
 	return ammo_amnt > 0 or ammo_amnt == -1
+
+func refill_ammo(amnt:int=max_ammo) -> void:
+	ammo_amnt = min(ammo_amnt+max_ammo, max_ammo)

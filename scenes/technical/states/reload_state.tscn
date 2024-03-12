@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgq3hxka0e5ek"]
+
+[ext_resource type="PackedScene" uid="uid://b32o6pbc0lqsf" path="res://scenes/technical/state.tscn" id="1_j3bha"]
+[ext_resource type="Script" path="res://scenes/technical/states/reload_state.gd" id="2_fybaf"]
+
+[node name="ReloadState" instance=ExtResource("1_j3bha")]
+script = ExtResource("2_fybaf")

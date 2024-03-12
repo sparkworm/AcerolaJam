@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cq4a7aopbkv1o"]
+[gd_scene load_steps=9 format=3 uid="uid://cq4a7aopbkv1o"]
 
 [ext_resource type="PackedScene" uid="uid://0nqbjef8p5eo" path="res://scenes/parent/character.tscn" id="1_s18rd"]
 [ext_resource type="PackedScene" uid="uid://brln0p7cxi4gh" path="res://scenes/technical/enemy_controller.tscn" id="2_umyas"]
@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bsbthap2allge" path="res://scenes/technical/enemy_detection.tscn" id="5_f87fc"]
 [ext_resource type="PackedScene" uid="uid://dc7lfi4pph4ko" path="res://scenes/technical/states/chasing_state.tscn" id="5_hfmjj"]
 [ext_resource type="PackedScene" uid="uid://pcxqm7x1okgo" path="res://scenes/technical/states/attack_state.tscn" id="6_owq3x"]
+[ext_resource type="PackedScene" uid="uid://bgq3hxka0e5ek" path="res://scenes/technical/states/reload_state.tscn" id="7_3t1vi"]
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_s18rd")]
 z_index = 1
+rotation_speed = 0.5
 
 [node name="Sprite2D" parent="." index="0"]
 z_index = 1
@@ -24,6 +26,7 @@ character = NodePath("../../..")
 
 [node name="EnemyIdleState" parent="ControllerContainer/EnemyController/StateMachine" index="0" node_paths=PackedStringArray("detection") instance=ExtResource("4_nmwke")]
 detection = NodePath("../../../../EnemyDetection")
+rotation_range = 3.142
 
 [node name="ChasingState" parent="ControllerContainer/EnemyController/StateMachine" index="1" node_paths=PackedStringArray("detection", "nav_agent") instance=ExtResource("5_hfmjj")]
 detection = NodePath("../../../../EnemyDetection")
@@ -31,7 +34,10 @@ nav_agent = NodePath("../../../../NavigationAgent2D")
 
 [node name="AttackState" parent="ControllerContainer/EnemyController/StateMachine" index="2" instance=ExtResource("6_owq3x")]
 
+[node name="ReloadState" parent="ControllerContainer/EnemyController/StateMachine" index="3" instance=ExtResource("7_3t1vi")]
+
 [node name="EnemyDetection" parent="." index="4" instance=ExtResource("5_f87fc")]
+enemy_group = "player"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="5"]
 unique_name_in_owner = true
