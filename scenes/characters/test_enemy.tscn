@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwhb4grw1u7g6"]
+[gd_scene load_steps=5 format=3 uid="uid://cwhb4grw1u7g6"]
 
 [ext_resource type="PackedScene" uid="uid://cq4a7aopbkv1o" path="res://scenes/parent/enemy.tscn" id="1_0er8e"]
 [ext_resource type="Texture2D" uid="uid://dggadlgx0j06v" path="res://visuals/sprites/enemy.png" id="2_3555d"]
+[ext_resource type="PackedScene" uid="uid://b4xon7jwr28gf" path="res://scenes/weapons/rifle.tscn" id="3_dq0t7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bvpxl"]
 radius = 13.0
@@ -11,6 +12,7 @@ collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
 controller = NodePath("ControllerContainer/EnemyController")
+item_type_held = 1
 speed = 50
 
 [node name="Sprite2D" parent="." index="0"]
@@ -21,8 +23,18 @@ texture = ExtResource("2_3555d")
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_bvpxl")
 
+[node name="AttackState" parent="ControllerContainer/EnemyController/StateMachine" index="2" node_paths=PackedStringArray("detection")]
+detection = NodePath("../../../../EnemyDetection")
+
+[node name="Inventory" parent="." index="3"]
+z_index = 1
+
+[node name="Rifle" parent="Inventory" index="2" instance=ExtResource("3_dq0t7")]
+position = Vector2(11, 1)
+
 [node name="EnemyDetection" parent="." index="4"]
 enemy_group = "player"
+distance_to_engage = 500
 metadata/_edit_lock_ = true
 
 [node name="NavigationAgent2D" parent="." index="5"]

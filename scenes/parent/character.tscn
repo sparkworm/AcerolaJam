@@ -14,8 +14,5 @@ script = ExtResource("1_6vb2q")
 
 [node name="ControllerContainer" type="Node" parent="."]
 
-[node name="Equipment" type="Node2D" parent="."]
-unique_name_in_owner = true
-
 [node name="Inventory" parent="." instance=ExtResource("2_8rkmd")]
 unique_name_in_owner = true

@@ -16,6 +16,8 @@ func _ready():
 
 func update(delta) -> void:
 	nav_update(delta)
+	if detection.can_engage(target):
+		state_machine.change_state_to("AttackState", {"target" : target})
 
 func enter(args := {}) -> void:
 	target = args["target"]

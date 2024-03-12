@@ -7,7 +7,7 @@ enum ALIGNMENTS {
 	neutral,
 }
 
-## controlls the actions of the character
+## controls the actions of the character
 @export var controller: Controller
 
 @export_category("Combat")
@@ -70,6 +70,9 @@ func die():
 	queue_free()
 
 #region equipment
+
+func can_use_item() -> bool:
+	return %Inventory.can_use_held_item()
 
 ## calls use() on the held piece of Equipment
 # !! can be skipped by connnecting the signal straight to the inventory's

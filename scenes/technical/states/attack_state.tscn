@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://pcxqm7x1okgo"]
+
+[ext_resource type="PackedScene" uid="uid://b32o6pbc0lqsf" path="res://scenes/technical/state.tscn" id="1_ko2h3"]
+[ext_resource type="Script" path="res://scenes/technical/states/attack_state.gd" id="2_6fbfw"]
+
+[node name="AttackState" instance=ExtResource("1_ko2h3")]
+script = ExtResource("2_6fbfw")

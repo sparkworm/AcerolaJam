@@ -73,3 +73,6 @@ func get_all_items() -> Array[Equipment]:
 		if slot.get_child_count() > 0:
 			arr.append(slot.get_child(0))
 	return arr
+
+func can_use_held_item() -> bool:
+	return item_held.can_use()

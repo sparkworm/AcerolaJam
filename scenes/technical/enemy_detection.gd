@@ -2,6 +2,8 @@ class_name EnemyDetection
 extends Node2D
 
 @export var enemy_group: String
+## if the target gets any closer than this, will switch to attacking
+@export var distance_to_engage: int = 100
 
 signal enemy_spotted(body: Character)
 signal enemy_entered_stealth_area(body: Character)
@@ -16,6 +18,11 @@ func has_line_of_sight(body) -> bool:
 		print("Line of sight null (this is a problem)")
 	
 	return $LineOfSightCheck.get_collider() == body
+
+func can_engage(target:Character) -> bool:
+	return (target.global_position - global_position).length() \
+			< distance_to_engage \
+			and has_line_of_sight(target)
 
 func _on_stealth_area_body_entered(body) -> void:
 	if body.is_in_group(enemy_group):
