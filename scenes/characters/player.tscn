@@ -23,11 +23,13 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_6x577")
 
 [node name="PlayerController" parent="ControllerContainer" index="0" node_paths=PackedStringArray("character") instance=ExtResource("2_ca3al")]
+key_item_melee = "item_melee"
+key_item_ranged = "item_ranged"
 character = NodePath("../..")
 
-[node name="Knife" parent="Equipment" index="0" instance=ExtResource("4_n2aq0")]
+[node name="Knife" parent="Inventory" index="2" instance=ExtResource("4_n2aq0")]
 position = Vector2(13, -1)
 
-[node name="Rifle" parent="Equipment" index="1" instance=ExtResource("4_0x5ao")]
+[node name="Rifle" parent="Inventory" index="3" instance=ExtResource("4_0x5ao")]
 visible = false
 position = Vector2(11, 0)

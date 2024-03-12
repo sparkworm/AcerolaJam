@@ -7,7 +7,8 @@ extends Node
 signal move(direction: Vector2)
 signal rotate(target_direction: float, delta: float)
 ## an action MUST correspond with a piece of Equipment
-signal action()
+signal use_item()
+signal change_item(idx: Equipment.ITEM_CATAGORIES)
 
 func calculate_movement(_delta) -> void:
 	pass

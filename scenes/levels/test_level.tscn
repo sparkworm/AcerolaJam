@@ -74,6 +74,10 @@ position = Vector2(93, 57)
 position = Vector2(-114, 89)
 collision_mask = 7
 
+[node name="TestLamp3" parent="MapItems/Props" index="2" instance=ExtResource("2_gpyou")]
+position = Vector2(-146, -105)
+collision_mask = 7
+
 [node name="LightMap" parent="." index="2"]
 disable_3d = true
 canvas_cull_mask = 4294967295

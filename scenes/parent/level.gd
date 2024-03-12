@@ -30,7 +30,7 @@ func _ready():
 			if equipment is Weapon:
 				equipment.fired.connect(Callable(self, "spawn_projectile"))
 		var hit_callable = Callable(self, "spawn_blood_splatter")
-		hit_callable = hit_callable.bind(12)
+		#hit_callable = hit_callable.bind(12)
 		character.is_hit.connect(hit_callable)
 		
 	
@@ -118,7 +118,7 @@ func spawn_blood_splatter(coords: Vector2, amnt: int) -> void:
 func spawn_blood_decal(coords: Vector2, initial_velocity) -> void:
 	var blood = blood_decal.instantiate() as BloodDecal
 	blood.position = coords
-	blood.max_size = 30/(initial_velocity)
+	blood.max_size = 25/(initial_velocity)
 	%LightMap/MapItems/Decals.add_child(blood)
 #endregion
 

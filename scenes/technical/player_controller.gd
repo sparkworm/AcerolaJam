@@ -8,6 +8,8 @@ extends Controller
 @export var key_right: String = "key_right"
 @export var key_action1: String = "action1"
 @export var key_action2: String = "action2"
+@export var key_item_melee: String = "item_melee"
+@export var key_item_ranged: String = "item_ranged"
 @export var key_interact: String = "interact"
 @export var key_reload: String = "reload"
 
@@ -15,9 +17,11 @@ func _process(delta):
 	calculate_movement(delta)
 	calculate_rotation(delta)
 	if Input.is_action_pressed(key_action1):
-		action.emit(0)
-	if Input.is_action_pressed(key_action2):
-		action.emit(1)
+		use_item.emit()
+	if Input.is_action_just_pressed(key_item_melee):
+		change_item.emit(Equipment.ITEM_CATAGORIES.melee_weapon)
+	if Input.is_action_just_pressed(key_item_ranged):
+		change_item.emit(Equipment.ITEM_CATAGORIES.ranged_weapon)
 
 ## calculates the movement that should be performed, and emits the move signal to accomodate
 func calculate_movement(_delta) -> void:
