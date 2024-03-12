@@ -37,6 +37,7 @@ func _ready():
 		# connect death signals
 		if character == main_character:
 			character.died.connect(Callable(self, "main_character_died"))
+		character.weapon_dropped.connect(Callable(self, "spawn_weapon_drop"))
 		
 	
 	initialize_view_map()
@@ -116,13 +117,15 @@ func spawn_blood_splatter(coords: Vector2, amnt: int) -> void:
 		#blood_spawner.apply_central_impulse(direction*magnitude*100)
 		blood_spawner.velocity = direction*magnitude
 		blood_spawner.initial_v = blood_spawner.velocity.length()
-		
 
 func spawn_blood_decal(coords: Vector2, initial_velocity) -> void:
 	var blood = blood_decal.instantiate() as BloodDecal
 	blood.position = coords
 	blood.max_size = 25/(initial_velocity)
 	%LightMap/MapItems/Decals.add_child(blood)
+
+func spawn_weapon_drop(weapon: WeaponDrop) -> void:
+	%LightMap/MapItems/Drops.call_deferred("add_child", weapon)
 #endregion
 
 #region cameras

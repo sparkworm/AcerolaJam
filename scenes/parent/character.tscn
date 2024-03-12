@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://0nqbjef8p5eo"]
+[gd_scene load_steps=4 format=3 uid="uid://0nqbjef8p5eo"]
 
 [ext_resource type="Script" path="res://scenes/parent/character.gd" id="1_6vb2q"]
 [ext_resource type="PackedScene" uid="uid://ddsf7fg8i7stl" path="res://scenes/technical/inventory.tscn" id="2_8rkmd"]
+[ext_resource type="PackedScene" uid="uid://dlqn02dyyqufi" path="res://scenes/weapons/weapon_drop.tscn" id="2_oeur2"]
 
 [node name="Character" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_6vb2q")
+weapon_drop = ExtResource("2_oeur2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -16,3 +18,10 @@ script = ExtResource("1_6vb2q")
 
 [node name="Inventory" parent="." instance=ExtResource("2_8rkmd")]
 unique_name_in_owner = true
+
+[node name="PickupArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]

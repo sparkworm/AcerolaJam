@@ -72,6 +72,8 @@ unique_name_in_owner = true
 
 [node name="Decals" type="Node2D" parent="MapItems"]
 
+[node name="Drops" type="Node2D" parent="MapItems"]
+
 [node name="LightMap" type="SubViewport" parent="."]
 unique_name_in_owner = true
 transparent_bg = true

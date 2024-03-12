@@ -32,18 +32,30 @@ func catagorize_outside_items() -> void:
 ## adds a specified item to its corrosponding slot
 ## [br] will replace an existing item, if present
 func add_item(item: Equipment) -> void:
+	if item == null:
+		return
 	# removes any existing items
 	remove_item(item.item_catagory)
 	# adds item
 	item.reparent(slots_dict[item.item_catagory])
+	item.position = Vector2(15,0)
+	item.rotation = 0
+	item_held = item
 	#slots_dict[item.item_catagory].add_child(item)
 
 ## removes all items in a given slot, though there shouldn't be more than one in a slot
 func remove_item(idx:Equipment.ITEM_CATAGORIES) -> void:
+	if slots_dict[idx] == null:
+		return
 	var slot:Node2D = slots_dict[idx]
 	for child in slot.get_children(): # should never be more than one, but looped anyway
 		slot.remove_child(child)
 		item_removed.emit(child, global_position)
+	item_held = null
+
+func remove_item_held() -> void:
+	if item_held != null:
+		remove_item(item_held.item_catagory)
 
 ## this is the function called from outside to change the held item
 func change_item_held(idx: Equipment.ITEM_CATAGORIES)-> void:
@@ -75,6 +87,8 @@ func get_all_items() -> Array[Equipment]:
 	return arr
 
 func can_use_held_item() -> bool:
+	if item_held == null:
+		return false
 	if item_held is Weapon:
 		return item_held.sufficient_ammo() and item_held.can_use()
 	return item_held.can_use()

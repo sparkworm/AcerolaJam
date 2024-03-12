@@ -35,7 +35,7 @@ position = Vector2(11, 1)
 
 [node name="EnemyDetection" parent="." index="4"]
 enemy_group = "player"
-distance_to_engage = 500
+distance_to_engage = 300
 metadata/_edit_lock_ = true
 
 [node name="NavigationAgent2D" parent="." index="5"]

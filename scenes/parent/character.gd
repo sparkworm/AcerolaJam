@@ -25,11 +25,15 @@ enum ALIGNMENTS {
 ## amount of rotations per second possible
 @export var rotation_speed: float = 1
 
+@export_category("Technical")
+@export var weapon_drop: PackedScene
+
 var actions: Array[Equipment]
 
 ## emitted when the character dies
 signal died(coords: Vector2)
 signal is_hit(coords: Vector2, damage: int)
+signal weapon_dropped(weapon: WeaponDrop)
 
 func _ready():
 	# connect controller signals to actual character actions
@@ -37,6 +41,8 @@ func _ready():
 	controller.rotate.connect(Callable(self, "execute_rotation"))
 	controller.use_item.connect(Callable(self, "use_item"))
 	controller.change_item.connect(Callable(self, "change_equipment"))
+	controller.grab_item.connect(Callable(self, "pick_up_equipment"))
+	controller.drop_item.connect(Callable(self, "drop_equipment"))
 	
 	%Inventory.change_item_held(item_type_held)
 	'
@@ -66,6 +72,7 @@ func hit(damage: int):
 
 ## this function is called when the character drops to 0 health
 func die():
+	drop_equipment()
 	# should probably call a die animation, a die sound, and possibly a die drop
 	died.emit(position)
 	queue_free()
@@ -93,6 +100,22 @@ func get_item_held() -> Equipment:
 
 func change_equipment(idx: Equipment.ITEM_CATAGORIES) -> void:
 	%Inventory.change_item_held(idx)
+
+func drop_equipment() -> void:
+	var drop = weapon_drop.instantiate() as WeaponDrop
+	drop.velocity = Vector2.from_angle(rotation)*randf_range(30, 60)
+	var item = get_item_held()
+	$Inventory.remove_item_held()
+	drop.add_weapon(item)
+	drop.global_position = global_position + Vector2.from_angle(rotation)*10
+	weapon_dropped.emit(drop)
+
+func pick_up_equipment() -> void:
+	for body in %PickupArea.get_overlapping_bodies():
+		if body is WeaponDrop:
+			%Inventory.add_item(body.get_weapon())
+			body.queue_free()
+			return
 
 '
 ## calls use() on an action if it is within the bounds of actions[]

@@ -107,6 +107,7 @@ item_ranged={
 2d_physics/layer_2="Character"
 2d_navigation/layer_2="intraversable"
 2d_physics/layer_3="Projectile"
+2d_physics/layer_4="Pickups"
 
 [rendering]
 
