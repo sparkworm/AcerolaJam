@@ -16,6 +16,7 @@ enum ALIGNMENTS {
 ## [br] upon reaching zero, the character dies :(
 @export var health: int = 100
 @export var item_type_held: Equipment.ITEM_CATAGORIES
+@export var extra_inaccuracy: float = 0.0
 
 @export_category("Movement")
 ## pixels per second that the character can move forward [br]
@@ -78,11 +79,17 @@ func can_use_item() -> bool:
 # !! can be skipped by connnecting the signal straight to the inventory's
 # use_item()
 func use_item() -> void:
-	%Inventory.use_item()
+	if can_use_item():
+		get_item_held().rotation = randf_range(-extra_inaccuracy, extra_inaccuracy)
+		%Inventory.use_item()
+	
 
 ## returns an array of all the equipment held by the character
 func get_equipment() -> Array[Equipment]:
 	return %Inventory.get_all_items()
+
+func get_item_held() -> Equipment:
+	return %Inventory.item_held
 
 func change_equipment(idx: Equipment.ITEM_CATAGORIES) -> void:
 	%Inventory.change_item_held(idx)

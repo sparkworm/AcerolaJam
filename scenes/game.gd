@@ -14,10 +14,11 @@ func _process(_delta):
 ## changes the active scene to the specified next_scene
 func change_scene(next_scene: PackedScene):
 	for child in $ActiveScene.get_children():
-		$ActiveScene.remove_child(child)
+		child.queue_free()
+		#$ActiveScene.remove_child(child)
 	var ns = next_scene.instantiate() as GameScene
 	ns.scene_changed.connect(Callable(self, "change_scene"))
-	$ActiveScene.add_child(ns)
+	$ActiveScene.call_deferred("add_child", ns)
 	
 
 func main_menu_toggle():

@@ -75,4 +75,6 @@ func get_all_items() -> Array[Equipment]:
 	return arr
 
 func can_use_held_item() -> bool:
+	if item_held is Weapon:
+		return item_held.sufficient_ammo() and item_held.can_use()
 	return item_held.can_use()

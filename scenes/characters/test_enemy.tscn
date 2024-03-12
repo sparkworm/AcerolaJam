@@ -13,6 +13,7 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 controller = NodePath("ControllerContainer/EnemyController")
 item_type_held = 1
+extra_inaccuracy = 0.3
 speed = 50
 
 [node name="Sprite2D" parent="." index="0"]

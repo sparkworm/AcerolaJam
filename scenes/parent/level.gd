@@ -3,7 +3,7 @@ extends GameScene
 
 @export var level_name := "Blank Level"
 
-@export var main_character: Node2D
+@export var main_character: Character
 
 @export_category("Visual")
 @export_color_no_alpha var background_map_tint: Color = Color(0.1, 0.1, 0.1)
@@ -26,12 +26,17 @@ func _ready():
 	map_items = %MapItems
 	
 	for character:Character in %MapItems/Characters.get_children():
+		# connect fire signals
 		for equipment in character.get_equipment():
 			if equipment is Weapon:
 				equipment.fired.connect(Callable(self, "spawn_projectile"))
+		# connect splatter signals
 		var hit_callable = Callable(self, "spawn_blood_splatter")
 		#hit_callable = hit_callable.bind(12)
 		character.is_hit.connect(hit_callable)
+		# connect death signals
+		if character == main_character:
+			character.died.connect(Callable(self, "main_character_died"))
 		
 	
 	initialize_view_map()
@@ -48,6 +53,7 @@ func _ready():
 			[%BackgroundCamera, %LightMapCamera, %ViewMapCamera, %OuterCamera,
 			%VisibilityPointLight, $ViewSprite, %BackgroundRectangle, 
 			%BackgroundSprite])
+	
 
 func _process(_delta):
 	center_on_main_character()
@@ -166,3 +172,7 @@ func zoom_cameras(amnt: float) -> void:
 			c.zoom += zoom_amnt
 
 #endregion
+
+## resets the level when the main character dies
+func main_character_died(_position) -> void:
+	scene_changed.emit(Globals.levels[level_name])

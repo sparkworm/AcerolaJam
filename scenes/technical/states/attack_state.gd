@@ -14,7 +14,6 @@ func update(_delta) -> void:
 
 func enter(args := {}) -> void:
 	target = args["target"]
-	character.use_item()
 
 func exit() -> void:
 	pass

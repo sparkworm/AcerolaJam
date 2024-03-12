@@ -7,6 +7,7 @@
 [node name="Weapon" instance=ExtResource("1_sg7kc")]
 script = ExtResource("2_vusnd")
 projectile = null
+ammo_amnt = -1
 fire_effect = ExtResource("3_itm6h")
 inaccuracy = 0.3
 is_melee = false
