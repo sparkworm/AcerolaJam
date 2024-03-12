@@ -48,8 +48,6 @@ func _ready():
 			[%BackgroundCamera, %LightMapCamera, %ViewMapCamera, %OuterCamera,
 			%VisibilityPointLight, $ViewSprite, %BackgroundRectangle, 
 			%BackgroundSprite])
-	
-	
 
 func _process(_delta):
 	center_on_main_character()
@@ -57,7 +55,6 @@ func _process(_delta):
 		zoom_cameras(zoom_increment)
 	if Input.is_action_just_pressed("zoom_out"):
 		zoom_cameras(-zoom_increment)
-	
 
 #region initialization
 
@@ -122,6 +119,8 @@ func spawn_blood_decal(coords: Vector2, initial_velocity) -> void:
 	%LightMap/MapItems/Decals.add_child(blood)
 #endregion
 
+#region cameras
+
 func shake_cameras(magnitude: float) -> void:
 	#var shake_vector := Vector2(randf_range(-1,1)*magnitude, 
 			#randf_range(-1,1)*magnitude)
@@ -165,3 +164,5 @@ func zoom_cameras(amnt: float) -> void:
 				return
 			
 			c.zoom += zoom_amnt
+
+#endregion
