@@ -6,7 +6,9 @@
 
 [node name="Knife" instance=ExtResource("1_pu0x5")]
 projectile = ExtResource("2_icxay")
+ammo_amnt = -1
 fire_effect = null
+inaccuracy = 1.0
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = 3.14159

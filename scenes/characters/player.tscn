@@ -23,8 +23,6 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_6x577")
 
 [node name="PlayerController" parent="ControllerContainer" index="0" node_paths=PackedStringArray("character") instance=ExtResource("2_ca3al")]
-key_item_melee = "item_melee"
-key_item_ranged = "item_ranged"
 character = NodePath("../..")
 
 [node name="Knife" parent="Inventory" index="2" instance=ExtResource("4_n2aq0")]

@@ -6,6 +6,7 @@
 
 [node name="Rifle" instance=ExtResource("1_6o31j")]
 projectile = ExtResource("2_ofj7g")
+ammo_amnt = 10
 item_catagory = 1
 cooldown = 0.2
 
