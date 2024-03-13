@@ -32,6 +32,8 @@ func execute_use() -> void:
 		spawn_projectile()
 		if fire_effect != null:
 			spawn_fire_effect()
+	else:
+		%EmptyFireSound.play()
 	
 
 func spawn_projectile() -> void:
