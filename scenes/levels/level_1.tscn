@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cyryn6qungif5" path="res://scenes/parent/level.tscn" id="1_vdlmf"]
 [ext_resource type="PackedScene" uid="uid://bynciwan524is" path="res://scenes/characters/player.tscn" id="2_e4psy"]
 [ext_resource type="PackedScene" uid="uid://b01ryjinipnqy" path="res://scenes/props/wall_lamp.tscn" id="3_qfax7"]
-[ext_resource type="PackedScene" uid="uid://c72e4cmf1o48f" path="res://scenes/characters/smg_enemy.tscn" id="3_r2ug7"]
+[ext_resource type="PackedScene" uid="uid://ldjf4moumg7i" path="res://scenes/props/floor_lamp.tscn" id="4_6g5kb"]
 [ext_resource type="PackedScene" uid="uid://c5rq3mph4vne0" path="res://scenes/props/test_lamp.tscn" id="4_ji7m1"]
 [ext_resource type="Shader" path="res://visuals/shaders/view_shader.gdshader" id="5_he73n"]
 [ext_resource type="Texture2D" uid="uid://dq2w7ksqua7y4" path="res://icon.svg" id="5_wuc73"]
@@ -47,43 +47,49 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="MapItems/Characters" index="0" instance=ExtResource("2_e4psy")]
 position = Vector2(49, 0)
 
-[node name="SMGEnemy" parent="MapItems/Characters" index="1" instance=ExtResource("3_r2ug7")]
-z_index = 1
-position = Vector2(61, -206)
-rotation = -3.14159
-
-[node name="SMGEnemy2" parent="MapItems/Characters" index="2" node_paths=PackedStringArray("controller") instance=ExtResource("3_r2ug7")]
-z_index = 1
-position = Vector2(309, -148)
-rotation = -2.61799
-controller = NodePath("../SMGEnemy/ControllerContainer/EnemyController")
-
 [node name="Lamps" type="Node2D" parent="MapItems/Props" index="0"]
 scale = Vector2(1, 1.00967)
 
-[node name="WallLamp" parent="MapItems/Props/Lamps" index="0" instance=ExtResource("3_qfax7")]
-position = Vector2(64, 34.6649)
+[node name="WallLamps" type="Node" parent="MapItems/Props/Lamps" index="0"]
+
+[node name="WallLamp" parent="MapItems/Props/Lamps/WallLamps" index="0" instance=ExtResource("3_qfax7")]
+position = Vector2(64, 35.0001)
 rotation = -1.57079
+scale = Vector2(1.00967, 1)
 
-[node name="WallLamp2" parent="MapItems/Props/Lamps" index="1" instance=ExtResource("3_qfax7")]
-position = Vector2(-32, 34.6649)
-rotation = 4.71238
+[node name="WallLamp2" parent="MapItems/Props/Lamps/WallLamps" index="1" instance=ExtResource("3_qfax7")]
+position = Vector2(-32, 35.0001)
+rotation = -1.57081
+scale = Vector2(1.00967, 1)
 
-[node name="WallLamp3" parent="MapItems/Props/Lamps" index="2" instance=ExtResource("3_qfax7")]
-position = Vector2(34, -109.937)
+[node name="WallLamp3" parent="MapItems/Props/Lamps/WallLamps" index="2" instance=ExtResource("3_qfax7")]
+position = Vector2(34, -111)
 rotation = 3.14159
+scale = Vector2(1, 1.00967)
 
-[node name="WallLamp4" parent="MapItems/Props/Lamps" index="3" instance=ExtResource("3_qfax7")]
-position = Vector2(-2, -109.937)
-rotation = 6.28318
+[node name="WallLamp4" parent="MapItems/Props/Lamps/WallLamps" index="3" instance=ExtResource("3_qfax7")]
+position = Vector2(-2, -111)
+scale = Vector2(1, 1.00967)
 
-[node name="WallLamp5" parent="MapItems/Props/Lamps" index="4" instance=ExtResource("3_qfax7")]
-position = Vector2(80, -187.19)
-rotation = 4.71238
+[node name="WallLamp5" parent="MapItems/Props/Lamps/WallLamps" index="4" instance=ExtResource("3_qfax7")]
+position = Vector2(80, -189)
+rotation = -1.57081
+scale = Vector2(1.00967, 1)
 
-[node name="WallLamp6" parent="MapItems/Props/Lamps" index="5" instance=ExtResource("3_qfax7")]
-position = Vector2(80, -223.836)
-rotation = 7.85397
+[node name="WallLamp6" parent="MapItems/Props/Lamps/WallLamps" index="5" instance=ExtResource("3_qfax7")]
+position = Vector2(80, -226.001)
+rotation = 1.57078
+scale = Vector2(1.00967, 1)
+
+[node name="FloorLamps" type="Node" parent="MapItems/Props/Lamps" index="1"]
+
+[node name="FloorLamp2" parent="MapItems/Props/Lamps/FloorLamps" index="0" instance=ExtResource("4_6g5kb")]
+modulate = Color(1, 0.137255, 0.129412, 1)
+position = Vector2(304, -272)
+
+[node name="FloorLamp5" parent="MapItems/Props/Lamps/FloorLamps" index="1" instance=ExtResource("4_6g5kb")]
+modulate = Color(1, 0.137255, 0.129412, 1)
+position = Vector2(528, -208)
 
 [node name="LightMap" parent="." index="2"]
 audio_listener_enable_2d = true

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ldjf4moumg7i"]
+
+[ext_resource type="PackedScene" uid="uid://cqa8jmx4oswy" path="res://scenes/parent/light_prop.tscn" id="1_cxv53"]
+[ext_resource type="Texture2D" uid="uid://b4ixxdkff5460" path="res://visuals/sprites/floor_lamp.png" id="2_eecgw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3uf80"]
+radius = 8.0
+
+[node name="FloorLamp" instance=ExtResource("1_cxv53")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_eecgw")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_3uf80")
+
+[node name="PointLight2D" parent="." index="2"]
+scale = Vector2(3, 3)
+energy = 1.5
+shadow_filter = 1
