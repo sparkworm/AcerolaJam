@@ -51,7 +51,7 @@ viewport_path = NodePath("ViewMap")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("2_4yksb")
-background_map_tint = Color(0.137255, 0.0745098, 0.141176, 1)
+background_map_tint = Color(0.0705882, 0.0313726, 0.0745098, 1)
 white_shader = ExtResource("3_gq2r0")
 blood_decal_spawner = ExtResource("3_yyddy")
 blood_decal = ExtResource("4_vbqas")
@@ -116,6 +116,7 @@ position_smoothing_enabled = true
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 texture = SubResource("ViewportTexture_sxw5l")
 
 [node name="ViewSprite" type="Sprite2D" parent="."]
