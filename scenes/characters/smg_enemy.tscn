@@ -5,7 +5,10 @@
 
 [node name="SMGEnemy" instance=ExtResource("1_n64yf")]
 item_type_held = 1
-speed = 20
 
 [node name="SMG" parent="Inventory" index="2" instance=ExtResource("2_euuqg")]
 position = Vector2(14, 1)
+recoil_amnt = 0.0
+
+[node name="EnemyDetection" parent="." index="4"]
+distance_to_engage = 200

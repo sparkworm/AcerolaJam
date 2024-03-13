@@ -26,9 +26,7 @@ func _ready():
 	
 	for character:Character in %MapItems/Characters.get_children():
 		# connect fire signals
-		for equipment in character.get_equipment():
-			if equipment is Weapon:
-				equipment.fired.connect(Callable(self, "spawn_projectile"))
+		character.weapon_fired.connect(Callable(self, "spawn_projectile"))
 		# connect splatter signals
 		var hit_callable = Callable(self, "spawn_blood_splatter")
 		#hit_callable = hit_callable.bind(12)
@@ -99,12 +97,13 @@ func spawn_character(character: Character) -> void:
 				equipment.fired.connect(Callable(self, "spawn_projectile"))
 	map_items.get_node("Characters").add_child(character)
 
-func spawn_projectile(proj: Projectile) -> void:
+func spawn_projectile(proj: Projectile, recoil: float, c: Character) -> void:
 	map_items.get_node("Projectiles").add_child(proj)
-	shake_cameras(5)
+	if c == main_character:
+		shake_cameras(recoil)
 
 func spawn_blood_splatter(coords: Vector2, amnt: int) -> void:
-	for i in range(amnt):
+	for i in range(int(amnt/2.5)):
 		var blood_spawner = blood_decal_spawner.instantiate() as BloodDecalSpawner
 		var direction: Vector2 = Vector2.from_angle(randf_range(0, 2*PI))
 		var magnitude: float = randf_range(40,300)

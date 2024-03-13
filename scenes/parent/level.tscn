@@ -139,3 +139,5 @@ texture = SubResource("ViewportTexture_r8lr6")
 
 [node name="OuterCamera" type="Camera2D" parent="."]
 unique_name_in_owner = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]

@@ -8,6 +8,7 @@
 projectile = ExtResource("2_g22lg")
 max_ammo = 18
 inaccuracy = 0.15
+recoil_amnt = 5.0
 item_catagory = 1
 cooldown = 0.75
 

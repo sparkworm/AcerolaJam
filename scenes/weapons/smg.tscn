@@ -9,6 +9,7 @@ projectile = ExtResource("2_40khm")
 max_ammo = 25
 inaccuracy = 0.45
 reload_time = 3.0
+recoil_amnt = 5.0
 item_catagory = 1
 cooldown = 0.1
 

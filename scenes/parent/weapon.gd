@@ -15,10 +15,12 @@ extends Equipment
 @export var is_melee: bool = false
 ## the amount of time in seconds that it takes for an enemy to reload
 @export var reload_time: float
+## the amount the screen shakes when the weapon is fired
+@export var recoil_amnt: float
 
 var ammo_amnt: int
 
-signal fired(proj: Projectile)
+signal fired(proj: Projectile, recoil: float)
 
 func _ready():
 	super._ready()
@@ -37,7 +39,8 @@ func spawn_projectile() -> void:
 	proj.global_position = %SpawnPoint.global_position
 	var variance = randf_range(-inaccuracy/2.0, inaccuracy/2.0)
 	proj.rotation = global_rotation + variance
-	fired.emit(proj)
+	fired.emit(proj, recoil_amnt)
+	%FireSound.play()
 
 func spawn_fire_effect() -> void:
 	var effect = fire_effect.instantiate()
@@ -54,3 +57,4 @@ func sufficient_ammo() -> bool:
 
 func refill_ammo(amnt:int=max_ammo) -> void:
 	ammo_amnt = min(ammo_amnt+amnt, max_ammo)
+	%ReloadSound.play()

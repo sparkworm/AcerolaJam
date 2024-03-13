@@ -34,6 +34,7 @@ var actions: Array[Equipment]
 signal died(coords: Vector2)
 signal is_hit(coords: Vector2, damage: int)
 signal weapon_dropped(weapon: WeaponDrop)
+signal weapon_fired(projectile: Projectile, recoil: float, character: Character)
 
 func _ready():
 	# connect controller signals to actual character actions
@@ -47,6 +48,10 @@ func _ready():
 	%Inventory.weapon_dropped.connect(Callable(self, "create_weapon_drop"))
 	
 	%Inventory.change_item_held(item_type_held)
+	
+	for equipment in get_equipment():
+			if equipment is Weapon:
+				equipment.fired.connect(Callable(self, "emit_fired_projectile"))
 	
 	'
 	for child in $Equipment.get_children():
@@ -66,19 +71,27 @@ func execute_movement(direction: Vector2) -> void:
 func execute_rotation(target_direction: float, delta: float) -> void:
 	rotation = rotate_toward(rotation, target_direction, 2*PI*rotation_speed*delta)
 
+func emit_fired_projectile(projectile: Projectile, recoil: float) -> void:
+	weapon_fired.emit(projectile, recoil, self)
+
 ## this function is called when the character is hit
 func hit(damage: int):
 	health -= damage
+	%HitSound.play()
 	is_hit.emit(position, damage)
 	if health <= 0:
 		die()
 
 ## this function is called when the character drops to 0 health
 func die():
-	drop_held_item()
+	if get_item_held() != null:
+		drop_held_item()
+	%DieSound.play()
 	# should probably call a die animation, a die sound, and possibly a die drop
 	died.emit(position)
-	queue_free()
+	$CollisionShape2D.set_deferred("disabled", true)
+	$Sprite2D.hide()
+	%DieSound.finished.connect(Callable(self, "queue_free"))
 
 #region equipment
 
@@ -120,6 +133,9 @@ func create_weapon_drop(item: Equipment) -> void:
 func pick_up_equipment() -> void:
 	for body in %PickupArea.get_overlapping_bodies():
 		if body is WeaponDrop:
+			for c in body.get_weapon().fired.get_connections():
+				body.get_weapon().fired.disconnect(c["callable"])
+			body.get_weapon().fired.connect(Callable(self, "emit_fired_projectile"))
 			%Inventory.add_item(body.get_weapon())
 			body.queue_free()
 			return

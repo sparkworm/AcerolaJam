@@ -14,7 +14,7 @@ func update(_delta) -> void:
 		character.use_item() # going to be called a lot, could be improved by connecting the signal
 	else:
 		state_machine.change_state_to("ChasingState", {"target" : target})
-	if not character.get_item_held().sufficient_ammo():
+	if character.get_item_held() != null and not character.get_item_held().sufficient_ammo():
 		state_machine.change_state_to("ReloadState", {"target" : target})
 	
 
