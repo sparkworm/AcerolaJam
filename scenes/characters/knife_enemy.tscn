@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://pgin2wuixk26"]
+
+[ext_resource type="PackedScene" uid="uid://cq4a7aopbkv1o" path="res://scenes/parent/enemy.tscn" id="1_qchtx"]
+[ext_resource type="PackedScene" uid="uid://dtcexpx56607b" path="res://scenes/weapons/knife.tscn" id="2_bi1ga"]
+
+[node name="KnifeEnemy" instance=ExtResource("1_qchtx")]
+
+[node name="Knife" parent="Inventory" index="2" instance=ExtResource("2_bi1ga")]
+position = Vector2(16, -1)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct6dag34jyilp"]
+
+[ext_resource type="PackedScene" uid="uid://cq4a7aopbkv1o" path="res://scenes/parent/enemy.tscn" id="1_k1t18"]
+[ext_resource type="PackedScene" uid="uid://b4xon7jwr28gf" path="res://scenes/weapons/rifle.tscn" id="2_kgsku"]
+
+[node name="RifleEnemy" instance=ExtResource("1_k1t18")]
+item_type_held = 1
+
+[node name="Rifle" parent="Inventory" index="2" instance=ExtResource("2_kgsku")]
+position = Vector2(12, 0)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwylse7sus0ph"]
+
+[ext_resource type="PackedScene" uid="uid://ny6y21mpxygg" path="res://scenes/parent/projectile.tscn" id="1_uurlg"]
+[ext_resource type="Texture2D" uid="uid://b5l81hfimeefs" path="res://visuals/sprites/bullet.png" id="2_cqr2a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iaykf"]
+size = Vector2(4, 4)
+
+[node name="PistolBullet" instance=ExtResource("1_uurlg")]
+rotation = 1.57055
+speed = 500
+damage = 15
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_cqr2a")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.00024517, -1)
+shape = SubResource("RectangleShape2D_iaykf")

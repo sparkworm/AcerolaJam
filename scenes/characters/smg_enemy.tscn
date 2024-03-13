@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c72e4cmf1o48f"]
+
+[ext_resource type="PackedScene" uid="uid://cq4a7aopbkv1o" path="res://scenes/parent/enemy.tscn" id="1_n64yf"]
+[ext_resource type="PackedScene" uid="uid://begw1rf4xnoes" path="res://scenes/weapons/smg.tscn" id="2_euuqg"]
+
+[node name="SMGEnemy" instance=ExtResource("1_n64yf")]
+item_type_held = 1
+
+[node name="SMG" parent="Inventory" index="2" instance=ExtResource("2_euuqg")]
+position = Vector2(14, 1)

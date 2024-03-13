@@ -6,8 +6,8 @@
 
 [node name="WeaponDrop" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 0
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_evpiv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
