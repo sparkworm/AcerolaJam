@@ -12,3 +12,6 @@ recoil_amnt = 0.0
 
 [node name="EnemyDetection" parent="." index="4"]
 distance_to_engage = 200
+
+[node name="Flashlight" parent="." index="8"]
+position = Vector2(20, 0)

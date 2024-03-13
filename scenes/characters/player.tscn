@@ -41,5 +41,4 @@ position = Vector2(13, -1)
 shape = SubResource("CircleShape2D_l1o47")
 
 [node name="Flashlight" parent="." index="6"]
-shadow_enabled = true
 shadow_item_cull_mask = 31
