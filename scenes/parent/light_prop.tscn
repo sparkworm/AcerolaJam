@@ -1,7 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqa8jmx4oswy"]
+[gd_scene load_steps=5 format=3 uid="uid://cqa8jmx4oswy"]
 
 [ext_resource type="PackedScene" uid="uid://cvm8r83lijtdu" path="res://scenes/parent/prop.tscn" id="1_hslsi"]
+[ext_resource type="Script" path="res://scenes/parent/light_prop.gd" id="2_8oilw"]
+
+[sub_resource type="Gradient" id="Gradient_7d83h"]
+offsets = PackedFloat32Array(0.141079, 0.60166)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_so0iw"]
+gradient = SubResource("Gradient_7d83h")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="LightProp" instance=ExtResource("1_hslsi")]
+script = ExtResource("2_8oilw")
 
 [node name="PointLight2D" type="PointLight2D" parent="." index="2"]
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_so0iw")

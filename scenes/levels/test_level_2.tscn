@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3j50sv1hdnp0"]
+
+[ext_resource type="PackedScene" uid="uid://cyryn6qungif5" path="res://scenes/parent/level.tscn" id="1_205co"]
+[ext_resource type="PackedScene" uid="uid://bynciwan524is" path="res://scenes/characters/player.tscn" id="2_swg7y"]
+[ext_resource type="Shader" path="res://visuals/shaders/view_shader.gdshader" id="3_xe1ir"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_oghac"]
+outlines = Array[PackedVector2Array]([PackedVector2Array(-202, -133, 20, -177, 231, -86, 272, 126, 74, 165, -123, 141, -189, 66)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4op6d"]
+viewport_path = NodePath("BackgroundMap")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_37atn"]
+viewport_path = NodePath("ViewMap")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yudnh"]
+resource_local_to_scene = true
+shader = ExtResource("3_xe1ir")
+shader_parameter/mask_with_alpha = true
+shader_parameter/mask_texture = SubResource("ViewportTexture_37atn")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_h6wbi"]
+viewport_path = NodePath("LightMap")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wbknh"]
+viewport_path = NodePath("LightMap")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t0guq"]
+viewport_path = NodePath("ViewMap")
+
+[node name="TestLevel2" node_paths=PackedStringArray("main_character") instance=ExtResource("1_205co")]
+level_name = "Test Level 2"
+main_character = NodePath("MapItems/Characters/Player")
+
+[node name="TileMap" parent="." index="0"]
+layer_0/tile_data = PackedInt32Array(-589827, 589824, 0, -524291, 589824, 0, -524290, 589824, 0, -458754, 589824, 0, -393217, 589824, 0, -393216, 589824, 0, -327679, 589824, 0, -262142, 589824, 0, -262141, 589824, 0, -196604, 589824, 0, -131067, 589824, 0, -131066, 589824, 0, -131065, 589824, 0, -65528, 589824, 0, -65527, 589824, 0, 10, 589824, 0, 11, 589824, 0, 65548, 589824, 0, 131085, 589824, 0, 196621, 589824, 0, 262157, 589824, 0, 262156, 589824, 0, 327692, 589824, 0, 327691, 589824, 0, 327690, 589824, 0, 327689, 589824, 0, 262152, 589824, 0, 262151, 589824, 0, 262150, 589824, 0, 196613, 589824, 0, 196612, 589824, 0, 131075, 589824, 0, 131074, 589824, 0, 65537, 589824, 0, 0, 589824, 0, -1, 589824, 0, -65538, 589824, 0, -131074, 589824, 0, -196611, 589824, 0, -262148, 589824, 0, -327685, 589824, 0, -393221, 589824, 0)
+layer_1/tile_data = PackedInt32Array(65535, 0, 0, -2, 0, 0, -65538, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -131070, 0, 0, -131069, 0, 0, -65533, 0, 0, 4, 0, 0, 65540, 0, 0, 65539, 0, 0, 131074, 0, 0, 131073, 0, 0, 65536, 0, 0, 131071, 0, 0, 131070, 0, 0, 131069, 0, 0, 65533, 0, 0, -3, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 65538, 0, 0, 65537, 0, 0, 131072, 0, 0, 196607, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -65532, 0, 0, -65531, 0, 0, 6, 0, 0, 65543, 0, 0, 131078, 0, 0, 131077, 0, 0, 196612, 0, 0, 196611, 0, 0, 262146, 0, 0, 262145, 0, 0, 262144, 0, 0, 327679, 0, 0, 327678, 0, 0, 327677, 0, 0, 262140, 0, 0, 262139, 0, 0, 196603, 0, 0, 131067, 0, 0, 65531, 0, 0, -5, 0, 0, -65540, 0, 0, -131075, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -196606, 0, 0, 65541, 0, 0, 131076, 0, 0, 262147, 0, 0, 327682, 0, 0, 327681, 0, 0, 327680, 0, 0, 131066, 0, 0, 65530, 0, 0, -6, 0, 0, -4, 0, 0, -65539, 0, 0, -65534, 0, 0, 5, 0, 0, 65542, 0, 0, 196614, 0, 0, 262149, 0, 0, 262148, 0, 0, 393215, 0, 0, -131074, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -131066, 0, 0, -131065, 0, 0, -65529, 0, 0, 7, 0, 0, 196613, 0, 0, 327676, 0, 0, 262138, 0, 0, 262137, 0, 0, 196601, 0, 0, 131065, 0, 0, 65529, 0, 0, -131067, 0, 0, 8, 0, 0, 65544, 0, 0, 131079, 0, 0, 196615, 0, 0, 262150, 0, 0, 262142, 0, 0, 262141, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -196602, 0, 0, -196601, 0, 0, -131064, 0, 0, -65527, 0, 0, 10, 0, 0, 65546, 0, 0, 131082, 0, 0, 196618, 0, 0, 262153, 0, 0, 327689, 0, 0, 327688, 0, 0, 327687, 0, 0, 327686, 0, 0, 327685, 0, 0, 327684, 0, 0, 327683, 0, 0, 196608, 0, 0, -65536, 0, 0, -262139, 0, 0, -262138, 0, 0, -196600, 0, 0, -65528, 0, 0, 131080, 0, 0, 196605, 0, 0, -131068, 0, 0, -65530, 0, 0, 65545, 0, 0, 131081, 0, 0, 196616, 0, 0, 262151, 0, 0, 393221, 0, 0, 393220, 0, 0, 393219, 0, 0, 393218, 0, 0, 393217, 0, 0, 393216, 0, 0, 458751, 0, 0, 393214, 0, 0, 196604, 0, 0, 131068, 0, 0, 65532, 0, 0, -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0, -327676, 0, 0, -327675, 0, 0, 131075, 0, 0, 196606, 0, 0, 131064, 0, 0, 65527, 0, 0, 65526, 0, 0, -10, 0, 0, -65545, 0, 0, -131081, 0, 0, -196616, 0, 0, -262151, 0, 0, -262150, 0, 0, -262149, 0, 0, -262148, 0, 0, -262147, 0, 0, -262146, 0, 0, -262145, 0, 0, 196610, 0, 0, 196609, 0, 0, 262143, 0, 0, 262136, 0, 0, 262135, 0, 0, 196599, 0, 0, 196598, 0, 0, 131062, 0, 0, -8, 0, 0, -7, 0, 0, -65542, 0, 0, -65541, 0, 0, -131076, 0, 0)
+
+[node name="Player" parent="MapItems/Characters" index="0" instance=ExtResource("2_swg7y")]
+position = Vector2(-35, 29)
+
+[node name="NavigationRegion2D" parent="LightMap" index="0"]
+navigation_polygon = SubResource("NavigationPolygon_oghac")
+
+[node name="BackgroundSprite" parent="." index="5"]
+visible = false
+texture = SubResource("ViewportTexture_4op6d")
+
+[node name="ViewSprite" parent="." index="6"]
+material = SubResource("ShaderMaterial_yudnh")
+texture = SubResource("ViewportTexture_h6wbi")
+
+[node name="LightDebugSprite" parent="DebugLayer" index="0"]
+texture = SubResource("ViewportTexture_wbknh")
+
+[node name="ViewMapDebugSprite" parent="DebugLayer" index="1"]
+texture = SubResource("ViewportTexture_t0guq")

@@ -11,6 +11,7 @@ void fragment() {
 		COLOR = color;
 	}
 	else {
+		//COLOR += vec4(0.1,0.1,0.1,0.1);
 		if (mask.r > 0.5) {
 			discard;
 		}

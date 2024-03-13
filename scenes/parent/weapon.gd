@@ -53,4 +53,4 @@ func sufficient_ammo() -> bool:
 	return ammo_amnt > 0 or ammo_amnt == -1
 
 func refill_ammo(amnt:int=max_ammo) -> void:
-	ammo_amnt = min(ammo_amnt+max_ammo, max_ammo)
+	ammo_amnt = min(ammo_amnt+amnt, max_ammo)

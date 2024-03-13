@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cq4a7aopbkv1o"]
+[gd_scene load_steps=11 format=3 uid="uid://cq4a7aopbkv1o"]
 
 [ext_resource type="PackedScene" uid="uid://0nqbjef8p5eo" path="res://scenes/parent/character.tscn" id="1_s18rd"]
+[ext_resource type="Texture2D" uid="uid://dggadlgx0j06v" path="res://visuals/sprites/enemy.png" id="2_u2qjg"]
 [ext_resource type="PackedScene" uid="uid://brln0p7cxi4gh" path="res://scenes/technical/enemy_controller.tscn" id="2_umyas"]
 [ext_resource type="Script" path="res://scenes/technical/state_machine.gd" id="3_p522q"]
 [ext_resource type="PackedScene" uid="uid://dfeaa7hl4qki1" path="res://scenes/technical/states/enemy_idle_state.tscn" id="4_nmwke"]
@@ -9,12 +10,24 @@
 [ext_resource type="PackedScene" uid="uid://pcxqm7x1okgo" path="res://scenes/technical/states/attack_state.tscn" id="6_owq3x"]
 [ext_resource type="PackedScene" uid="uid://bgq3hxka0e5ek" path="res://scenes/technical/states/reload_state.tscn" id="7_3t1vi"]
 
-[node name="Enemy" groups=["enemy"] instance=ExtResource("1_s18rd")]
-z_index = 1
+[sub_resource type="CircleShape2D" id="CircleShape2D_g3qux"]
+radius = 14.0357
+
+[node name="Enemy" node_paths=PackedStringArray("controller") groups=["enemy"] instance=ExtResource("1_s18rd")]
+z_index = 2
+motion_mode = 1
+wall_min_slide_angle = 0.0
+controller = NodePath("ControllerContainer/EnemyController")
 rotation_speed = 0.5
 
 [node name="Sprite2D" parent="." index="0"]
 z_index = 1
+rotation = 1.5708
+texture = ExtResource("2_u2qjg")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_g3qux")
 
 [node name="EnemyController" parent="ControllerContainer" index="0" node_paths=PackedStringArray("character") instance=ExtResource("2_umyas")]
 character = NodePath("../..")
@@ -32,9 +45,13 @@ rotation_range = 3.142
 detection = NodePath("../../../../EnemyDetection")
 nav_agent = NodePath("../../../../NavigationAgent2D")
 
-[node name="AttackState" parent="ControllerContainer/EnemyController/StateMachine" index="2" instance=ExtResource("6_owq3x")]
+[node name="AttackState" parent="ControllerContainer/EnemyController/StateMachine" index="2" node_paths=PackedStringArray("detection") instance=ExtResource("6_owq3x")]
+detection = NodePath("../../../../EnemyDetection")
 
 [node name="ReloadState" parent="ControllerContainer/EnemyController/StateMachine" index="3" instance=ExtResource("7_3t1vi")]
+
+[node name="Inventory" parent="." index="3"]
+z_index = 1
 
 [node name="EnemyDetection" parent="." index="4" instance=ExtResource("5_f87fc")]
 enemy_group = "player"

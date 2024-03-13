@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b01ryjinipnqy"]
+
+[ext_resource type="PackedScene" uid="uid://cqa8jmx4oswy" path="res://scenes/parent/light_prop.tscn" id="1_8twwu"]
+[ext_resource type="Texture2D" uid="uid://dsfqpmt56trer" path="res://visuals/sprites/lamp.png" id="2_82y3r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yiotu"]
+size = Vector2(6, 10)
+
+[node name="WallLamp" instance=ExtResource("1_8twwu")]
+modulate = Color(1, 0.980392, 0.596078, 1)
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_82y3r")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_yiotu")
+
+[node name="PointLight2D" parent="." index="2"]
+scale = Vector2(1.5, 1.5)
+shadow_filter = 1

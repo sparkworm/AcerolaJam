@@ -2,7 +2,6 @@ class_name Level
 extends GameScene
 
 @export var level_name := "Blank Level"
-
 @export var main_character: Character
 
 @export_category("Visual")
