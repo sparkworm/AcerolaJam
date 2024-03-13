@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c78g6jylrulk4"
-path="res://.godot/imported/155388__woodmoose__guncock.wav-dd6787231c119dea476c893d9834c71e.sample"
+path="res://.godot/imported/155388__woodmoose__guncock.wav-37fa4d1d380df8085330a76b6c0b7f38.sample"
 
 [deps]
 
-source_file="res://audio/sfx/155388__woodmoose__guncock.wav"
-dest_files=["res://.godot/imported/155388__woodmoose__guncock.wav-dd6787231c119dea476c893d9834c71e.sample"]
+source_file="res://audio/sfx/weapon/155388__woodmoose__guncock.wav"
+dest_files=["res://.godot/imported/155388__woodmoose__guncock.wav-37fa4d1d380df8085330a76b6c0b7f38.sample"]
 
 [params]
 

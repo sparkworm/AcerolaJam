@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://3vm0x62tx17r"]
+[gd_scene load_steps=2 format=3 uid="uid://3vm0x62tx17r"]
+
+[ext_resource type="Texture2D" uid="uid://pns6yo7x2gsc" path="res://visuals/flashlight_beam.png" id="1_ionkp"]
 
 [node name="Flashlight" type="PointLight2D"]
 color = Color(1, 0.964706, 0.654902, 1)
+texture = ExtResource("1_ionkp")

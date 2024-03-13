@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bynciwan524is"]
+[gd_scene load_steps=9 format=3 uid="uid://bynciwan524is"]
 
 [ext_resource type="PackedScene" uid="uid://0nqbjef8p5eo" path="res://scenes/parent/character.tscn" id="1_qbgq0"]
 [ext_resource type="PackedScene" uid="uid://yimf7eg2k0w2" path="res://scenes/technical/player_controller.tscn" id="2_ca3al"]
 [ext_resource type="Texture2D" uid="uid://dbhka74bp2rjr" path="res://visuals/sprites/characer2.png" id="2_x0y7i"]
 [ext_resource type="PackedScene" uid="uid://dtcexpx56607b" path="res://scenes/weapons/knife.tscn" id="4_n2aq0"]
 [ext_resource type="PackedScene" uid="uid://cufrf4owmt3yh" path="res://scenes/weapons/pistol.tscn" id="5_iktb0"]
+[ext_resource type="PackedScene" uid="uid://3vm0x62tx17r" path="res://scenes/effects/flashlight.tscn" id="6_j736j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6x577"]
 radius = 12.0
@@ -39,3 +40,7 @@ position = Vector2(13, -1)
 
 [node name="CollisionShape2D" parent="PickupArea" index="0"]
 shape = SubResource("CircleShape2D_l1o47")
+
+[node name="Flashlight" parent="." index="6" instance=ExtResource("6_j736j")]
+position = Vector2(89, 0)
+rotation = -1.5708

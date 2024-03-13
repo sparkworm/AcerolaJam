@@ -34,7 +34,6 @@ func execute_use() -> void:
 			spawn_fire_effect()
 	else:
 		%EmptyFireSound.play()
-	
 
 func spawn_projectile() -> void:
 	var proj = projectile.instantiate()

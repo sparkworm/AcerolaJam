@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/parent/character.gd" id="1_6vb2q"]
 [ext_resource type="PackedScene" uid="uid://ddsf7fg8i7stl" path="res://scenes/technical/inventory.tscn" id="2_8rkmd"]
 [ext_resource type="PackedScene" uid="uid://dlqn02dyyqufi" path="res://scenes/weapons/weapon_drop.tscn" id="2_oeur2"]
-[ext_resource type="AudioStream" uid="uid://ki6aiuu0clds" path="res://audio/sfx/360942__gprosser__splat.ogg" id="4_avbud"]
-[ext_resource type="AudioStream" uid="uid://cjo3pvfhj7rfx" path="res://audio/sfx/195954__minian89__death_blood_splatter.mp3" id="5_0563c"]
+[ext_resource type="AudioStream" uid="uid://ki6aiuu0clds" path="res://audio/sfx/damage/360942__gprosser__splat.ogg" id="4_054lj"]
+[ext_resource type="AudioStream" uid="uid://cjo3pvfhj7rfx" path="res://audio/sfx/damage/195954__minian89__death_blood_splatter.mp3" id="5_j84sp"]
 
 [node name="Character" type="CharacterBody2D"]
 collision_layer = 2
@@ -32,8 +32,8 @@ collision_mask = 8
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="Audio"]
 unique_name_in_owner = true
-stream = ExtResource("4_avbud")
+stream = ExtResource("4_054lj")
 
 [node name="DieSound" type="AudioStreamPlayer2D" parent="Audio"]
 unique_name_in_owner = true
-stream = ExtResource("5_0563c")
+stream = ExtResource("5_j84sp")

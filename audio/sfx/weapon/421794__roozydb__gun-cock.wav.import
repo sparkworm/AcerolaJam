@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://befcqqayk7ds3"
-path="res://.godot/imported/421794__roozydb__gun-cock.wav-5f4ebe4106f52fdd739e91164e25fe7d.sample"
+path="res://.godot/imported/421794__roozydb__gun-cock.wav-ecb31b3a5e956cd48754cc5a3d9d203c.sample"
 
 [deps]
 
-source_file="res://audio/sfx/421794__roozydb__gun-cock.wav"
-dest_files=["res://.godot/imported/421794__roozydb__gun-cock.wav-5f4ebe4106f52fdd739e91164e25fe7d.sample"]
+source_file="res://audio/sfx/weapon/421794__roozydb__gun-cock.wav"
+dest_files=["res://.godot/imported/421794__roozydb__gun-cock.wav-ecb31b3a5e956cd48754cc5a3d9d203c.sample"]
 
 [params]
 
