@@ -5,6 +5,7 @@
 
 [node name="SMGEnemy" instance=ExtResource("1_n64yf")]
 item_type_held = 1
+speed = 20
 
 [node name="SMG" parent="Inventory" index="2" instance=ExtResource("2_euuqg")]
 position = Vector2(14, 1)

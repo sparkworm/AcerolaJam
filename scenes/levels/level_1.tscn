@@ -51,7 +51,14 @@ position = Vector2(49, 0)
 z_index = 1
 position = Vector2(61, -206)
 rotation = -3.14159
-extra_inaccuracy = 0.0
+speed = 35
+
+[node name="SMGEnemy2" parent="MapItems/Characters" index="2" node_paths=PackedStringArray("controller") instance=ExtResource("3_r2ug7")]
+z_index = 1
+position = Vector2(309, -148)
+rotation = -2.61799
+controller = NodePath("../SMGEnemy/ControllerContainer/EnemyController")
+speed = 35
 
 [node name="Lamps" type="Node2D" parent="MapItems/Props" index="0"]
 scale = Vector2(1, 1.00967)

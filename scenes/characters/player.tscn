@@ -17,6 +17,7 @@ z_index = 2
 motion_mode = 1
 controller = NodePath("ControllerContainer/PlayerController")
 health = 200
+speed = 100
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(-1, 0)

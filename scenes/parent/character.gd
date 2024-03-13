@@ -21,7 +21,7 @@ enum ALIGNMENTS {
 @export_category("Movement")
 ## pixels per second that the character can move forward [br]
 ## speed is calculated as 1/3 + (2/3)cos(angle of movement from rotation)
-@export var speed: int = 100
+@export var speed: int = 20
 ## amount of rotations per second possible
 @export var rotation_speed: float = 1
 
