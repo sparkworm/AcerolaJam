@@ -84,13 +84,17 @@ func hit(damage: int):
 
 ## this function is called when the character drops to 0 health
 func die():
+	# makes character drop what they're holding
 	if get_item_held() != null:
 		drop_held_item()
+	# play death sound
 	%DieSound.play()
-	# should probably call a die animation, a die sound, and possibly a die drop
+	# emit death signal
 	died.emit(position)
+	# hide visible things as the sound finishes
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Sprite2D.hide()
+	$Flashlight.hide()
 	%DieSound.finished.connect(Callable(self, "queue_free"))
 
 #region equipment

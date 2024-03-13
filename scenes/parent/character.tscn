@@ -40,6 +40,7 @@ unique_name_in_owner = true
 stream = ExtResource("5_j84sp")
 
 [node name="Flashlight" parent="." instance=ExtResource("6_kbmi4")]
+unique_name_in_owner = true
 position = Vector2(16, 0)
 rotation = -1.5708
 shadow_enabled = true

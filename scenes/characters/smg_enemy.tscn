@@ -14,4 +14,5 @@ recoil_amnt = 0.0
 distance_to_engage = 200
 
 [node name="Flashlight" parent="." index="8"]
+unique_name_in_owner = false
 position = Vector2(20, 0)
