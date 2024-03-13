@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://0nqbjef8p5eo"]
+[gd_scene load_steps=7 format=3 uid="uid://0nqbjef8p5eo"]
 
 [ext_resource type="Script" path="res://scenes/parent/character.gd" id="1_6vb2q"]
 [ext_resource type="PackedScene" uid="uid://ddsf7fg8i7stl" path="res://scenes/technical/inventory.tscn" id="2_8rkmd"]
 [ext_resource type="PackedScene" uid="uid://dlqn02dyyqufi" path="res://scenes/weapons/weapon_drop.tscn" id="2_oeur2"]
 [ext_resource type="AudioStream" uid="uid://ki6aiuu0clds" path="res://audio/sfx/damage/360942__gprosser__splat.ogg" id="4_054lj"]
 [ext_resource type="AudioStream" uid="uid://cjo3pvfhj7rfx" path="res://audio/sfx/damage/195954__minian89__death_blood_splatter.mp3" id="5_j84sp"]
+[ext_resource type="PackedScene" uid="uid://3vm0x62tx17r" path="res://scenes/effects/flashlight.tscn" id="6_kbmi4"]
 
 [node name="Character" type="CharacterBody2D"]
 collision_layer = 2
@@ -37,3 +38,8 @@ stream = ExtResource("4_054lj")
 [node name="DieSound" type="AudioStreamPlayer2D" parent="Audio"]
 unique_name_in_owner = true
 stream = ExtResource("5_j84sp")
+
+[node name="Flashlight" parent="." instance=ExtResource("6_kbmi4")]
+position = Vector2(20, 0)
+rotation = -1.5708
+shadow_enabled = true

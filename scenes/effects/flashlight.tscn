@@ -5,3 +5,4 @@
 [node name="Flashlight" type="PointLight2D"]
 color = Color(1, 0.964706, 0.654902, 1)
 texture = ExtResource("1_ionkp")
+offset = Vector2(0, 80)
