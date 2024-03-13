@@ -124,6 +124,7 @@ func spawn_blood_decal(coords: Vector2, initial_velocity) -> void:
 	%LightMap/MapItems/Decals.add_child(blood)
 
 func spawn_weapon_drop(weapon: WeaponDrop) -> void:
+	print("adding weapon: ", weapon)
 	%LightMap/MapItems/Drops.call_deferred("add_child", weapon)
 #endregion
 

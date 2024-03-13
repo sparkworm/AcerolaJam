@@ -11,8 +11,8 @@ extends Node2D
 
 var item_held: Equipment = null
 
-## emitted when an item is removed allowing the level to spawn in an item pickup
-signal item_removed(item:Equipment, coords: Vector2)
+## emitted when an item is removed
+signal weapon_dropped(item:Weapon)
 
 func _ready():
 	catagorize_outside_items()
@@ -50,8 +50,9 @@ func remove_item(idx:Equipment.ITEM_CATAGORIES) -> void:
 	var slot:Node2D = slots_dict[idx]
 	for child in slot.get_children(): # should never be more than one, but looped anyway
 		slot.remove_child(child)
-		item_removed.emit(child, global_position)
-	item_held = null
+		weapon_dropped.emit(child)
+	if item_held != null and idx == item_held.item_catagory:
+		item_held = null
 
 func remove_item_held() -> void:
 	if item_held != null:

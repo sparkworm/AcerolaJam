@@ -10,6 +10,7 @@ func _process(delta):
 
 func add_weapon(w: Weapon) -> void:
 	$Weapon.add_child(w)
+	w.show()
 	#w.reparent($Weapon)
 
 func get_weapon() -> Weapon:

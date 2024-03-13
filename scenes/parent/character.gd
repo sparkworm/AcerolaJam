@@ -42,9 +42,12 @@ func _ready():
 	controller.use_item.connect(Callable(self, "use_item"))
 	controller.change_item.connect(Callable(self, "change_equipment"))
 	controller.grab_item.connect(Callable(self, "pick_up_equipment"))
-	controller.drop_item.connect(Callable(self, "drop_equipment"))
+	controller.drop_item.connect(Callable(self, "drop_held_item"))
+	
+	%Inventory.weapon_dropped.connect(Callable(self, "create_weapon_drop"))
 	
 	%Inventory.change_item_held(item_type_held)
+	
 	'
 	for child in $Equipment.get_children():
 		child = child as Equipment
@@ -72,7 +75,7 @@ func hit(damage: int):
 
 ## this function is called when the character drops to 0 health
 func die():
-	drop_equipment()
+	drop_held_item()
 	# should probably call a die animation, a die sound, and possibly a die drop
 	died.emit(position)
 	queue_free()
@@ -101,11 +104,15 @@ func get_item_held() -> Equipment:
 func change_equipment(idx: Equipment.ITEM_CATAGORIES) -> void:
 	%Inventory.change_item_held(idx)
 
-func drop_equipment() -> void:
+func drop_held_item() -> void:
+	drop_item(get_item_held())
+
+func drop_item(item: Equipment) -> void:
+	$Inventory.remove_item(item.item_catagory)
+
+func create_weapon_drop(item: Equipment) -> void:
 	var drop = weapon_drop.instantiate() as WeaponDrop
 	drop.velocity = Vector2.from_angle(rotation)*randf_range(30, 60)
-	var item = get_item_held()
-	$Inventory.remove_item_held()
 	drop.add_weapon(item)
 	drop.global_position = global_position + Vector2.from_angle(rotation)*10
 	weapon_dropped.emit(drop)
