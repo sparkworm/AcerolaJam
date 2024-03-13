@@ -51,6 +51,7 @@ position = Vector2(49, 0)
 z_index = 1
 position = Vector2(61, -206)
 rotation = -3.14159
+extra_inaccuracy = 0.0
 
 [node name="Lamps" type="Node2D" parent="MapItems/Props" index="0"]
 scale = Vector2(1, 1.00967)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ucqsheg1r2gp"]
+
+[ext_resource type="PackedScene" uid="uid://cq4a7aopbkv1o" path="res://scenes/parent/enemy.tscn" id="1_m17xa"]
+[ext_resource type="PackedScene" uid="uid://cufrf4owmt3yh" path="res://scenes/weapons/pistol.tscn" id="2_f2bkl"]
+
+[node name="PistolEnemy" instance=ExtResource("1_m17xa")]
+item_type_held = 1
+
+[node name="Pistol" parent="Inventory" index="2" instance=ExtResource("2_f2bkl")]
