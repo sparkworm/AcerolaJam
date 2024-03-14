@@ -1,17 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://bh1mktidaufu4"]
+[gd_scene load_steps=18 format=3 uid="uid://bh1mktidaufu4"]
 
 [ext_resource type="PackedScene" uid="uid://cyryn6qungif5" path="res://scenes/parent/level.tscn" id="1_vdlmf"]
 [ext_resource type="PackedScene" uid="uid://bynciwan524is" path="res://scenes/characters/player.tscn" id="2_e4psy"]
 [ext_resource type="PackedScene" uid="uid://b01ryjinipnqy" path="res://scenes/props/wall_lamp.tscn" id="3_qfax7"]
 [ext_resource type="PackedScene" uid="uid://c72e4cmf1o48f" path="res://scenes/characters/smg_enemy.tscn" id="3_r2ug7"]
 [ext_resource type="PackedScene" uid="uid://ldjf4moumg7i" path="res://scenes/props/floor_lamp.tscn" id="4_6g5kb"]
+[ext_resource type="PackedScene" uid="uid://ucqsheg1r2gp" path="res://scenes/characters/pistol_enemy.tscn" id="5_esldv"]
 [ext_resource type="Shader" path="res://visuals/shaders/view_shader.gdshader" id="5_he73n"]
 [ext_resource type="PackedScene" uid="uid://h0ynxt7n86mn" path="res://scenes/technical/transition_area.tscn" id="5_jjwnh"]
 [ext_resource type="PackedScene" uid="uid://lki4rhp43p6q" path="res://scenes/levels/level_2.tscn" id="6_vn6pc"]
 [ext_resource type="AudioStream" uid="uid://cle5lgmuw7g8x" path="res://audio/music/aggressive-metal-sinister-111839.mp3" id="8_ausg8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jb3q8"]
-outlines = Array[PackedVector2Array]([PackedVector2Array(-80, -300, 558, -299, 559, 46, -75, 45)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-80, -300, 558, -299, 566, 58, 372, 28, 351, 250, -28, 253, -23, 509, -379, 504, -319, 223, -230, 210, -234, 152, -155, 144, -155, -48)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p0pkr"]
@@ -54,6 +55,45 @@ position = Vector2(-176, 416)
 [node name="SMGEnemy" parent="MapItems/Characters" index="1" instance=ExtResource("3_r2ug7")]
 position = Vector2(64, -208)
 rotation = 3.14159
+
+[node name="SMGEnemy2" parent="MapItems/Characters" index="2" node_paths=PackedStringArray("controller") instance=ExtResource("3_r2ug7")]
+position = Vector2(-99, 76)
+rotation = 6.28318
+controller = NodePath("../SMGEnemy/ControllerContainer/EnemyController")
+
+[node name="SMGEnemy3" parent="MapItems/Characters" index="3" node_paths=PackedStringArray("controller") instance=ExtResource("3_r2ug7")]
+position = Vector2(396, -200)
+rotation = 9.42476
+controller = NodePath("../SMGEnemy/ControllerContainer/EnemyController")
+
+[node name="SMGEnemy4" parent="MapItems/Characters" index="4" node_paths=PackedStringArray("controller") instance=ExtResource("3_r2ug7")]
+position = Vector2(256, -27)
+rotation = 6.28318
+controller = NodePath("../SMGEnemy/ControllerContainer/EnemyController")
+
+[node name="PistolEnemy" parent="MapItems/Characters" index="5" instance=ExtResource("5_esldv")]
+position = Vector2(-172, 346)
+rotation = -1.57079
+
+[node name="PistolEnemy2" parent="MapItems/Characters" index="6" node_paths=PackedStringArray("controller") instance=ExtResource("5_esldv")]
+position = Vector2(140, 200)
+rotation = -3.14159
+controller = NodePath("../PistolEnemy/ControllerContainer/EnemyController")
+
+[node name="PistolEnemy5" parent="MapItems/Characters" index="7" node_paths=PackedStringArray("controller") instance=ExtResource("5_esldv")]
+position = Vector2(456, -128)
+rotation = -1.57079
+controller = NodePath("../PistolEnemy/ControllerContainer/EnemyController")
+
+[node name="PistolEnemy3" parent="MapItems/Characters" index="8" node_paths=PackedStringArray("controller") instance=ExtResource("5_esldv")]
+position = Vector2(304, 81)
+rotation = -3.92699
+controller = NodePath("../PistolEnemy/ControllerContainer/EnemyController")
+
+[node name="PistolEnemy4" parent="MapItems/Characters" index="9" node_paths=PackedStringArray("controller") instance=ExtResource("5_esldv")]
+position = Vector2(191, 74)
+rotation = -4.71238
+controller = NodePath("../PistolEnemy/ControllerContainer/EnemyController")
 
 [node name="Lamps" type="Node2D" parent="MapItems/Props" index="0"]
 scale = Vector2(1, 1.00967)

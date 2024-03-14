@@ -9,8 +9,8 @@
 
 [sub_resource type="Gradient" id="Gradient_lqrjs"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.688525)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.129032, 0.489247, 0.736559)
+colors = PackedColorArray(1, 1, 1, 1, 0.458977, 0.458977, 0.458977, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kfx0j"]
 gradient = SubResource("Gradient_lqrjs")

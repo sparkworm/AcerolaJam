@@ -26,7 +26,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
-polygon = PackedVector2Array(320, -30, 0, 0, 320, 30)
+polygon = PackedVector2Array(320, -50, 0, -8, 0, 8, 320, 50)
 
 [node name="AggressionArea" type="Area2D" parent="."]
 visible = false
