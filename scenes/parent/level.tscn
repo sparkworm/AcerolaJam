@@ -151,4 +151,5 @@ unique_name_in_owner = true
 current = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
 autoplay = true
