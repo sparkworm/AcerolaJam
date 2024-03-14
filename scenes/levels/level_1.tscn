@@ -89,6 +89,22 @@ position = Vector2(80, -226.001)
 rotation = 1.57078
 scale = Vector2(1.00967, 1)
 
+[node name="WallLamp7" parent="MapItems/Props/Lamps/WallLamps" index="6" instance=ExtResource("3_qfax7")]
+position = Vector2(-48, 227)
+rotation = -1.57079
+
+[node name="WallLamp8" parent="MapItems/Props/Lamps/WallLamps" index="7" instance=ExtResource("3_qfax7")]
+position = Vector2(80, 226)
+rotation = -1.57079
+
+[node name="WallLamp9" parent="MapItems/Props/Lamps/WallLamps" index="8" instance=ExtResource("3_qfax7")]
+position = Vector2(-47, 175)
+rotation = 1.59246
+
+[node name="WallLamp10" parent="MapItems/Props/Lamps/WallLamps" index="9" instance=ExtResource("3_qfax7")]
+position = Vector2(81, 174)
+rotation = 1.59246
+
 [node name="FloorLamps" type="Node" parent="MapItems/Props/Lamps" index="1"]
 
 [node name="FloorLamp2" parent="MapItems/Props/Lamps/FloorLamps" index="0" instance=ExtResource("4_6g5kb")]
@@ -98,6 +114,22 @@ position = Vector2(304, -272)
 [node name="FloorLamp5" parent="MapItems/Props/Lamps/FloorLamps" index="1" instance=ExtResource("4_6g5kb")]
 modulate = Color(1, 0.137255, 0.129412, 1)
 position = Vector2(528, -208)
+
+[node name="FloorLamp" parent="MapItems/Props/Lamps/FloorLamps" index="2" instance=ExtResource("4_6g5kb")]
+modulate = Color(0.705882, 1, 1, 1)
+position = Vector2(-280, 472)
+
+[node name="FloorLamp3" parent="MapItems/Props/Lamps/FloorLamps" index="3" instance=ExtResource("4_6g5kb")]
+modulate = Color(0.705882, 1, 1, 1)
+position = Vector2(-72, 472)
+
+[node name="FloorLamp4" parent="MapItems/Props/Lamps/FloorLamps" index="4" instance=ExtResource("4_6g5kb")]
+modulate = Color(0.705882, 1, 1, 1)
+position = Vector2(-72, 248)
+
+[node name="FloorLamp6" parent="MapItems/Props/Lamps/FloorLamps" index="5" instance=ExtResource("4_6g5kb")]
+modulate = Color(0.705882, 1, 1, 1)
+position = Vector2(-280, 248)
 
 [node name="TransitionArea" parent="MapItems/TransitionAreas" index="0" instance=ExtResource("5_jjwnh")]
 position = Vector2(520, -88)

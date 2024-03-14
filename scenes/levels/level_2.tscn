@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://lki4rhp43p6q"]
+[gd_scene load_steps=16 format=3 uid="uid://lki4rhp43p6q"]
 
 [ext_resource type="PackedScene" uid="uid://cyryn6qungif5" path="res://scenes/parent/level.tscn" id="1_md3ib"]
 [ext_resource type="Shader" path="res://visuals/shaders/view_shader.gdshader" id="2_gy4cm"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c72e4cmf1o48f" path="res://scenes/characters/smg_enemy.tscn" id="4_xe4uw"]
 [ext_resource type="PackedScene" uid="uid://ldjf4moumg7i" path="res://scenes/props/floor_lamp.tscn" id="5_3teqt"]
 [ext_resource type="PackedScene" uid="uid://b01ryjinipnqy" path="res://scenes/props/wall_lamp.tscn" id="6_d0s5m"]
+[ext_resource type="AudioStream" uid="uid://bofgkx7doq10j" path="res://audio/music/speed-thrill-beat-190669.mp3" id="8_t3k8j"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c11dq"]
 outlines = Array[PackedVector2Array]([PackedVector2Array(-212, -335, 754, -305, 844, 509, 210, 577, -146, 261)])
@@ -133,3 +134,6 @@ texture = SubResource("ViewportTexture_llssx")
 
 [node name="ViewMapDebugSprite" parent="DebugLayer" index="1"]
 texture = SubResource("ViewportTexture_fwo22")
+
+[node name="Music" parent="." index="10"]
+stream = ExtResource("8_t3k8j")
