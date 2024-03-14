@@ -108,7 +108,7 @@ func can_use_item() -> bool:
 func use_item() -> void:
 	if can_use_item():
 		get_item_held().rotation = randf_range(-extra_inaccuracy, extra_inaccuracy)
-		%Inventory.use_item()
+	%Inventory.use_item()
 	
 
 ## returns an array of all the equipment held by the character
