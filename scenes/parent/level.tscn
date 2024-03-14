@@ -89,6 +89,9 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position_smoothing_enabled = true
 
+[node name="CanvasModulate" type="CanvasModulate" parent="LightMap"]
+color = Color(0.117647, 0.117647, 0.117647, 1)
+
 [node name="ViewMap" type="SubViewport" parent="."]
 unique_name_in_owner = true
 transparent_bg = true

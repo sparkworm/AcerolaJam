@@ -4,6 +4,7 @@ func _ready():
 	$PointLight2D.color = modulate
 
 func hit(_damage):
+	$BreakSound.play(0.2)
 	turn_off()
 
 func turn_on() -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqa8jmx4oswy"]
+[gd_scene load_steps=6 format=3 uid="uid://cqa8jmx4oswy"]
 
 [ext_resource type="PackedScene" uid="uid://cvm8r83lijtdu" path="res://scenes/parent/prop.tscn" id="1_hslsi"]
 [ext_resource type="Script" path="res://scenes/parent/light_prop.gd" id="2_8oilw"]
+[ext_resource type="AudioStream" uid="uid://dgffb871u3jsc" path="res://audio/sfx/damage/glass-smash-6266.mp3" id="3_b3sy8"]
 
 [sub_resource type="Gradient" id="Gradient_7d83h"]
 offsets = PackedFloat32Array(0.141079, 0.60166)
@@ -21,3 +22,6 @@ script = ExtResource("2_8oilw")
 shadow_enabled = true
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_so0iw")
+
+[node name="BreakSound" type="AudioStreamPlayer2D" parent="." index="3"]
+stream = ExtResource("3_b3sy8")
