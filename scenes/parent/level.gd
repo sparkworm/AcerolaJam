@@ -29,7 +29,7 @@ func _ready():
 		character.weapon_fired.connect(Callable(self, "spawn_projectile"))
 		# connect splatter signals
 		var hit_callable = Callable(self, "spawn_blood_splatter")
-		#hit_callable = hit_callable.bind(12)
+		hit_callable = hit_callable.bind(character)
 		character.is_hit.connect(hit_callable)
 		# connect death signals
 		if character == main_character:
@@ -105,9 +105,15 @@ func spawn_projectile(proj: Projectile, recoil: float, c: Character) -> void:
 	if c == main_character:
 		shake_cameras(recoil)
 
-func spawn_blood_splatter(coords: Vector2, amnt: int) -> void:
+func spawn_blood_splatter(coords: Vector2, amnt: int, character_hit: Character) -> void:
 	for i in range(int(amnt/2.5)):
 		var blood_spawner = blood_decal_spawner.instantiate() as BloodDecalSpawner
+		
+		if character_hit == main_character:
+			blood_spawner.set_blood_type(BloodDecalSpawner.BLOOD_TYPE.player)
+		else:
+			blood_spawner.set_blood_type(BloodDecalSpawner.BLOOD_TYPE.enemy)
+		
 		var direction: Vector2 = Vector2.from_angle(randf_range(0, 2*PI))
 		var magnitude: float = randf_range(40,300)
 		
@@ -119,10 +125,12 @@ func spawn_blood_splatter(coords: Vector2, amnt: int) -> void:
 		blood_spawner.velocity = direction*magnitude
 		blood_spawner.initial_v = blood_spawner.velocity.length()
 
-func spawn_blood_decal(coords: Vector2, initial_velocity) -> void:
+func spawn_blood_decal(coords: Vector2, initial_velocity: float, 
+		blood_type: BloodDecalSpawner.BLOOD_TYPE) -> void:
 	var blood = blood_decal.instantiate() as BloodDecal
 	blood.position = coords
 	blood.max_size = 25/(initial_velocity)
+	blood.set_blood_type(blood_type)
 	%LightMap/MapItems/Decals.add_child(blood)
 
 func spawn_weapon_drop(weapon: WeaponDrop) -> void:
