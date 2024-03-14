@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://lki4rhp43p6q"]
+[gd_scene load_steps=18 format=3 uid="uid://lki4rhp43p6q"]
 
 [ext_resource type="PackedScene" uid="uid://cyryn6qungif5" path="res://scenes/parent/level.tscn" id="1_md3ib"]
 [ext_resource type="Shader" path="res://visuals/shaders/view_shader.gdshader" id="2_gy4cm"]
@@ -7,10 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://c72e4cmf1o48f" path="res://scenes/characters/smg_enemy.tscn" id="4_xe4uw"]
 [ext_resource type="PackedScene" uid="uid://ldjf4moumg7i" path="res://scenes/props/floor_lamp.tscn" id="5_3teqt"]
 [ext_resource type="PackedScene" uid="uid://b01ryjinipnqy" path="res://scenes/props/wall_lamp.tscn" id="6_d0s5m"]
+[ext_resource type="PackedScene" uid="uid://h0ynxt7n86mn" path="res://scenes/technical/transition_area.tscn" id="7_d28ed"]
+[ext_resource type="PackedScene" uid="uid://ux2iprtx02xv" path="res://scenes/levels/level_3.tscn" id="8_kkjht"]
 [ext_resource type="AudioStream" uid="uid://bofgkx7doq10j" path="res://audio/music/speed-thrill-beat-190669.mp3" id="8_t3k8j"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c11dq"]
-outlines = Array[PackedVector2Array]([PackedVector2Array(-212, -335, 754, -305, 844, 509, 210, 577, -146, 261)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-929, -183, -437, -176, -433, -307, 573, -304, 600, 109, 829, 102, 844, 509, 207, 561, 216, 304, -457, 297, -460, 178, -915, 216)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6l5ve"]
@@ -214,6 +216,10 @@ rotation = 3.18495
 [node name="WallLamp8" parent="MapItems/Props" index="23" instance=ExtResource("6_d0s5m")]
 position = Vector2(366, -65)
 rotation = 6.28318
+
+[node name="TransitionArea" parent="MapItems/TransitionAreas" index="0" instance=ExtResource("7_d28ed")]
+position = Vector2(399, 506)
+next_level = ExtResource("8_kkjht")
 
 [node name="NavigationRegion2D" parent="LightMap" index="0"]
 navigation_polygon = SubResource("NavigationPolygon_c11dq")
