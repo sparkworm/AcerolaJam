@@ -5,6 +5,7 @@ func _ready():
 
 func hit(_damage):
 	$BreakSound.play(0.2)
+	$Sprite2D.modulate = Color(0.1, 0.1, 0.1)
 	turn_off()
 
 func turn_on() -> void:

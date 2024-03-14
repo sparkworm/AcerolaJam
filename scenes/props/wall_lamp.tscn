@@ -13,6 +13,7 @@ modulate = Color(1, 0.980392, 0.596078, 1)
 texture = ExtResource("2_82y3r")
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 shape = SubResource("RectangleShape2D_yiotu")
 
 [node name="PointLight2D" parent="." index="2"]
