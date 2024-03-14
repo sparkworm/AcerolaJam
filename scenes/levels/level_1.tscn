@@ -1,12 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bh1mktidaufu4"]
+[gd_scene load_steps=13 format=3 uid="uid://bh1mktidaufu4"]
 
 [ext_resource type="PackedScene" uid="uid://cyryn6qungif5" path="res://scenes/parent/level.tscn" id="1_vdlmf"]
 [ext_resource type="PackedScene" uid="uid://bynciwan524is" path="res://scenes/characters/player.tscn" id="2_e4psy"]
 [ext_resource type="PackedScene" uid="uid://b01ryjinipnqy" path="res://scenes/props/wall_lamp.tscn" id="3_qfax7"]
 [ext_resource type="PackedScene" uid="uid://ldjf4moumg7i" path="res://scenes/props/floor_lamp.tscn" id="4_6g5kb"]
-[ext_resource type="PackedScene" uid="uid://c5rq3mph4vne0" path="res://scenes/props/test_lamp.tscn" id="4_ji7m1"]
 [ext_resource type="Shader" path="res://visuals/shaders/view_shader.gdshader" id="5_he73n"]
-[ext_resource type="Texture2D" uid="uid://dq2w7ksqua7y4" path="res://icon.svg" id="5_wuc73"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jb3q8"]
 outlines = Array[PackedVector2Array]([PackedVector2Array(-80, -300, 558, -299, 559, 46, -75, 45)])
@@ -98,10 +96,7 @@ size = Vector2i(640, 360)
 [node name="NavigationRegion2D" parent="LightMap" index="0"]
 navigation_polygon = SubResource("NavigationPolygon_jb3q8")
 
-[node name="TestLamp" parent="LightMap" index="2" instance=ExtResource("4_ji7m1")]
-position = Vector2(143.4, 30)
-
-[node name="CanvasModulate" type="CanvasModulate" parent="LightMap" index="3"]
+[node name="CanvasModulate" type="CanvasModulate" parent="LightMap" index="2"]
 color = Color(0.117647, 0.117647, 0.117647, 1)
 
 [node name="ViewMap" parent="." index="3"]
@@ -127,10 +122,6 @@ metadata/_edit_lock_ = true
 [node name="LightDebugSprite" parent="DebugLayer" index="0"]
 position = Vector2(137, 112)
 texture = SubResource("ViewportTexture_qxpp0")
-
-[node name="Sprite2D" type="Sprite2D" parent="DebugLayer/LightDebugSprite" index="0"]
-scale = Vector2(5.23963, 6.2)
-texture = ExtResource("5_wuc73")
 
 [node name="ViewMapDebugSprite" parent="DebugLayer" index="1"]
 position = Vector2(137, 43)

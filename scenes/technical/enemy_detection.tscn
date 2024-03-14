@@ -29,6 +29,7 @@ collision_mask = 2
 polygon = PackedVector2Array(320, -30, 0, 0, 320, 30)
 
 [node name="AggressionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
