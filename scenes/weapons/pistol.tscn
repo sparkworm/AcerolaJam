@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cufrf4owmt3yh"]
+[gd_scene load_steps=5 format=3 uid="uid://cufrf4owmt3yh"]
 
 [ext_resource type="PackedScene" uid="uid://d2t1lxxbyg757" path="res://scenes/parent/weapon.tscn" id="1_w212m"]
 [ext_resource type="PackedScene" uid="uid://bwylse7sus0ph" path="res://scenes/projectiles/pistol_bullet.tscn" id="2_g22lg"]
 [ext_resource type="Texture2D" uid="uid://cuxnp3ydx2gcc" path="res://visuals/sprites/pistol.png" id="2_qslqh"]
+[ext_resource type="AudioStream" uid="uid://c0r7qyclluqqq" path="res://audio/sfx/weapon/single-gunshot-62-hp-37188.mp3" id="4_0nu3b"]
 
 [node name="Pistol" instance=ExtResource("1_w212m")]
 projectile = ExtResource("2_g22lg")
@@ -19,3 +20,6 @@ texture = ExtResource("2_qslqh")
 
 [node name="SpawnPoint" parent="." index="1"]
 position = Vector2(5, 0)
+
+[node name="FireSound" parent="Audio" index="0"]
+stream = ExtResource("4_0nu3b")

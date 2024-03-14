@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/gun_sound2.ogg-5d796a379cf7eb661d144d4f45b1b2
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

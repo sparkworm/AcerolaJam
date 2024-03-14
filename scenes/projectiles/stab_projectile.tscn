@@ -9,7 +9,7 @@ height = 14.0
 
 [node name="StabProjectile" instance=ExtResource("1_vp5si")]
 speed = 300
-damage = 50
+damage = 100
 lifetime = 0.05
 
 [node name="Sprite2D" parent="." index="0"]
