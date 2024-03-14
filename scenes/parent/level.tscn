@@ -151,3 +151,4 @@ unique_name_in_owner = true
 current = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+autoplay = true

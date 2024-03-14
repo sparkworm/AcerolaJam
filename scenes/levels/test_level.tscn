@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxk8lhc5nd7yj"]
+[gd_scene load_steps=14 format=3 uid="uid://bxk8lhc5nd7yj"]
 
 [ext_resource type="PackedScene" uid="uid://cyryn6qungif5" path="res://scenes/parent/level.tscn" id="1_o1hsy"]
 [ext_resource type="PackedScene" uid="uid://c5rq3mph4vne0" path="res://scenes/props/test_lamp.tscn" id="2_gpyou"]
@@ -32,6 +32,10 @@ viewport_path = NodePath("LightMap")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5vfpu"]
 viewport_path = NodePath("ViewMap")
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_s638o"]
+resource_local_to_scene = true
+loop = true
 
 [node name="TestLevel" node_paths=PackedStringArray("main_character") instance=ExtResource("1_o1hsy")]
 level_name = "Test Level"
@@ -80,7 +84,7 @@ collision_mask = 7
 [node name="LightMap" parent="." index="2"]
 disable_3d = true
 
-[node name="CanvasModulate" type="CanvasModulate" parent="LightMap" index="0"]
+[node name="CanvasModulate2" type="CanvasModulate" parent="LightMap" index="0"]
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
 [node name="NavigationRegion2D" parent="LightMap" index="1"]
@@ -109,3 +113,6 @@ texture = SubResource("ViewportTexture_5vfpu")
 
 [node name="OuterCamera" parent="." index="8"]
 metadata/_edit_lock_ = true
+
+[node name="Music" parent="." index="10"]
+stream = SubResource("AudioStreamMP3_s638o")

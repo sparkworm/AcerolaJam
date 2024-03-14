@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/the-fighter-156582.mp3-5fff946247f26c3ddb6525
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
