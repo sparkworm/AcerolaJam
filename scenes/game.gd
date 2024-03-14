@@ -13,6 +13,7 @@ func _process(_delta):
 
 ## changes the active scene to the specified next_scene
 func change_scene(next_scene: PackedScene):
+	print("CHANGING SCENE")
 	for child in $ActiveScene.get_children():
 		child.queue_free()
 		#$ActiveScene.remove_child(child)

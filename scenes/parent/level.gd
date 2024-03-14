@@ -35,7 +35,10 @@ func _ready():
 		if character == main_character:
 			character.died.connect(Callable(self, "main_character_died"))
 		character.weapon_dropped.connect(Callable(self, "spawn_weapon_drop"))
-		
+	
+	for transition_area:TransitionArea in $MapItems/TransitionAreas.get_children():
+		transition_area.main_character = main_character
+		transition_area.change_level.connect(Callable(self, "call_scene_changed"))
 	
 	initialize_view_map()
 	initialize_light_map()
@@ -178,3 +181,6 @@ func zoom_cameras(amnt: float) -> void:
 ## resets the level when the main character dies
 func main_character_died(_position) -> void:
 	scene_changed.emit(Globals.levels[level_name])
+
+func call_scene_changed(scene: PackedScene) -> void:
+	scene_changed.emit(scene)
