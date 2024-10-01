@@ -26,5 +26,5 @@ This project is made in Godot version 4.2.1 stable
 Credits:
 Programming - sparkworm
 Art - sparkworm
-Music - sparkworm
-Sound - sparkworm
+Music - various artists
+Sound - various artists
